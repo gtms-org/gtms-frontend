@@ -48,6 +48,7 @@ import {
   changePageBackground,
   changePageBackgroundImage,
   clearPageBackground,
+  showPostDetailsModal,
 } from '@app/state'
 // ui
 import Headroom from 'react-headroom'

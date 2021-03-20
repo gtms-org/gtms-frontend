@@ -7,9 +7,10 @@ import { NavigationWrapper } from '@app/components/commons/NavigationWrapper'
 import { NotificationsSidebar } from '@app/components/commons/NotificationsSidebar'
 import { NotificationsActive } from '@app/components/commons/NotificationsActive'
 import { GroupPreview } from '@app/components/commons/GroupPreview'
+import { PostDetailsModal } from '@app/components/post/PostDetailsModal'
+import { LoginWindow } from '@app/components/commons/LoginWindow'
 import { init, initAuthSession } from '@gtms/state-user'
 import { init as initWPN } from '@gtms/state-notification'
-import { LoginWindow } from '@app/components/commons/LoginWindow'
 import { uiQuery } from '@app/state'
 import { baseUIQuery } from '@app/queries'
 import { OffCanvas } from '@gtms/ui/OffCanvas'
@@ -137,6 +138,7 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
         >
           <NavigationWrapper />
           <GroupPreview />
+          <PostDetailsModal />
           <Component {...pageProps} />
           {/* <div
             className={cx(
