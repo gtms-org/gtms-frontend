@@ -1,0 +1,14 @@
+@import '~@gtms/styles/scss/mixins/zindex.scss';
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @include z-index(modal);
+
+  &.loggedIn {
+    padding-left: 50px; // main menu on left
+  }
+}
