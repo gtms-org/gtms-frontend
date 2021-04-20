@@ -10,7 +10,6 @@
 .promotedTags {
   position: relative;
   z-index: 2;
-  display: none;
 
   .items {
     @include gridDefault(6);
@@ -32,6 +31,8 @@
 
       &:hover {
         .favButton {
+          min-width: 40px;
+          min-height: 40px;
           display: block;
         }
       }

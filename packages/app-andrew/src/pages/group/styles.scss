@@ -57,6 +57,9 @@
 
       .headroom {
         position: relative;
+        z-index: 2;
+        margin-top: 10px;
+        margin-bottom: 10px;
 
         > div {
           position: relative;
@@ -150,19 +153,13 @@
       }
     }
 
-    .promotedTags {
+    .promotedTags,
+    .groupMembers {
       position: fixed;
       z-index: 111;
       top: 10px;
       left: 0;
-      margin: 50px 90px;
-    }
-
-    .groupMembers {
-      position: sticky;
-      z-index: 2;
-      top: 10px;
-      left: 0;
+      padding: 50px 60px;
       width: 100%;
     }
   }

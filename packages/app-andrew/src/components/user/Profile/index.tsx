@@ -54,9 +54,9 @@ export const Profile: FC<{
       <div className={styles.tags}>
         <h2 className={styles.header}>Moje tagi:</h2>
         <TagGroup>
-          {user.tags.length > 0 &&
+          {user.tags?.length > 0 &&
             user.tags.map((tag) => <Tag label={tag} key={`user-tag-${tag}`} />)}
-          {user.tags.length === 0 && <p>No tags</p>}
+          {user.tags?.length === 0 && <p>No tags</p>}
         </TagGroup>
       </div>
       {state.id !== user.id && (

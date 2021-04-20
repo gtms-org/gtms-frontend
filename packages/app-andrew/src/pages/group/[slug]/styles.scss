@@ -6,18 +6,7 @@
 
 .pageWrapper {
   @include pageWrapper();
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-
-  background: none; // reset bg from mixin pageWrapper()
-  margin: 0; // reset margin from mixin pageWrapper()
-  padding: 0; // reset padding from mixin pageWrapper()
-
   max-width: $tempWidth;
-  margin: 0 50px;
-  margin-bottom: 50px;
 
   .spinner {
     margin: 40px auto;
@@ -35,12 +24,15 @@
   .columns {
     position: relative;
     display: flex;
-    gap: 10px;
-    max-width: $tempWidth;
+    margin-top: 10px;
     min-height: 500px;
 
     .sidebar {
-      min-width: 140px;
+      padding: 20px;
+      min-width: 200px;
+      border-top-left-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+      background: $theme3;
     }
 
     .content {
@@ -48,9 +40,10 @@
       gap: 20px;
       flex-direction: column;
       width: 100%;
-      padding: 10px;
-      border-radius: $borderRadius;
-      background: $theme3;
+      padding: 20px;
+      border-top-right-radius: $borderRadius;
+      border-bottom-right-radius: $borderRadius;
+      background: $theme2;
 
       .btnDeleteWrapper {
         margin-top: auto;

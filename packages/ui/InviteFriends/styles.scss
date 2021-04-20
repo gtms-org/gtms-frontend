@@ -22,16 +22,6 @@
     .header {
       @include fontSize(xlg);
       @include fontWeight(semiBold);
-      text-transform: uppercase;
-    }
-
-    .subheader {
-      @include fontSize(lg);
-      @include fontWeight(semiBold);
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      text-transform: initial;
     }
 
     .btn {
@@ -39,7 +29,7 @@
       @include buttonSizeDefault();
       @include buttonShapeDefault();
       @include buttonColorsDefault();
-      margin: auto;
+      margin: 10px auto;
 
       &:hover {
         @include buttonColorsPrimary();

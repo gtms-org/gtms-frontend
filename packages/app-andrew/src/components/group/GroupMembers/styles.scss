@@ -5,18 +5,28 @@
 @import '~@gtms/styles/scss/mixins/focusElementEffects.scss';
 @import '~@gtms/styles/scss/mixins/grid.scss';
 
-.modal {
-  padding: 0;
-}
-
 .wrapper {
+  .spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .modal {
+    padding: 0;
+  }
+
   .items {
-    @include gridDefault(10);
+    @include gridDefault(6);
 
     .item {
       position: relative;
       width: 100%;
       height: 100%;
+      position: relative;
       overflow: hidden;
       cursor: pointer;
 
@@ -26,7 +36,7 @@
 
       &:hover {
         .avatar {
-          @include effectColorTransparentOverlay('circle');
+          @include effectColorTransparentOverlay('defaultRadius');
         }
       }
 
@@ -36,11 +46,11 @@
           @include buttonSizeDefault();
           @include buttonShapeDefault();
           @include buttonColorsSecondary();
-          @include fontSize(xxlg);
+          @include fontSize(xxxlg);
+          @include fontWeight(bold);
           min-height: auto; // for resetting button mixin
           width: 100%;
           height: 100%;
-          border-radius: 50%;
 
           &:hover {
             @include buttonColorsPrimary();
@@ -48,23 +58,5 @@
         }
       }
     }
-  }
-
-  .btn {
-    @include buttonDefault();
-    @include buttonSizeSm();
-    @include buttonShapeDefault();
-    @include buttonWithIcon(right);
-    @include buttonWithoutBackground();
-    margin-left: auto;
-    margin-top: 20px;
-
-    &:hover {
-      @include buttonColorBlueText();
-    }
-  }
-
-  p {
-    margin: 5px 0;
   }
 }

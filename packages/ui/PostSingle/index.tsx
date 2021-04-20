@@ -15,6 +15,7 @@ import { IImage } from '@gtms/commons/types/image'
 // ui
 import useKey from 'use-key-hook'
 import Lightbox from 'react-image-lightbox'
+import { FaRegClock } from 'react-icons/fa'
 import { IoMdSend } from 'react-icons/io'
 import { Button } from '../Button'
 import { DeletePost } from './DeletePost'
@@ -184,7 +185,10 @@ export const PostSingle: FC<{
         />
         <a className={styles.userNameAndDate}>
           <span onClick={onUserClickCallback}>{getDisplayName(owner)}</span>
-          <span>
+          <span className={styles.date}>
+            <i>
+              <FaRegClock />
+            </i>
             {formatDistance(new Date(createdAt), new Date(), {
               locale: pl,
             })}

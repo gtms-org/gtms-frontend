@@ -5,7 +5,23 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   grid-gap: 8px;
+
+  .btnDropdown {
+    @include buttonDefault();
+    @include buttonSizeSm();
+    @include buttonShapeDefault();
+    @include buttonWithSpinnerAndLabel();
+    @include buttonColorsDefault();
+    @include fontSize(md);
+    min-width: 35px;
+    min-height: 35px;
+
+    &:hover {
+      @include buttonColorsPrimary();
+    }
+  }
 
   .joinLeaveButton,
   .settingsButton,

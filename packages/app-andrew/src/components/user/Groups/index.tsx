@@ -89,24 +89,24 @@ export const Groups: FC<{
         </ul>
       </div>
 
-      {currentTab === Tabs.groupsMember && groupsMember.length > 0 && (
+      {currentTab === Tabs.groupsMember && groupsMember?.length > 0 && (
         <GroupsList groups={groupsMember} />
       )}
-      {currentTab === Tabs.groupsMember && groupsMember.length === 0 && (
+      {currentTab === Tabs.groupsMember && groupsMember?.length === 0 && (
         <p>User did not join any group yet</p>
       )}
 
-      {currentTab === Tabs.groupsAdmin && groupsAdmin.length > 0 && (
+      {currentTab === Tabs.groupsAdmin && groupsAdmin?.length > 0 && (
         <GroupsList groups={groupsAdmin} />
       )}
-      {currentTab === Tabs.groupsAdmin && groupsAdmin.length === 0 && (
+      {currentTab === Tabs.groupsAdmin && groupsAdmin?.length === 0 && (
         <p>User has no admin rights</p>
       )}
 
-      {currentTab === Tabs.groupsOwner && groupsOwner.length > 0 && (
+      {currentTab === Tabs.groupsOwner && groupsOwner?.length > 0 && (
         <GroupsList groups={groupsOwner} />
       )}
-      {currentTab === Tabs.groupsOwner && groupsOwner.length === 0 && (
+      {currentTab === Tabs.groupsOwner && groupsOwner?.length === 0 && (
         <p>User did not create any group</p>
       )}
     </div>

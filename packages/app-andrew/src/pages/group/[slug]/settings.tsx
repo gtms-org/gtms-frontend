@@ -143,8 +143,8 @@ export const GroupSettingsPage: NextPage<GroupSettingsPageProps> = ({
           <div className={styles.columns}>
             <GroupSettingsSidebar
               additionalStyles={styles.sidebar}
-              tab={tab}
               setTab={setTab}
+              tab={tab}
             />
             <div className={styles.content}>
               {tab === Tabs.general && (

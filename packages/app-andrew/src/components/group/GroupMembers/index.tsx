@@ -11,19 +11,20 @@ import { Button } from '@gtms/ui/Button'
 import { ErrorWrapper } from '@gtms/ui/ErrorWrapper'
 import { InviteFriends } from '@gtms/ui/InviteFriends'
 import { Modal } from '@gtms/ui/Modal'
-import { Overlay } from '@gtms/ui/Overlay'
+import { Pagination } from '@gtms/ui/Pagination'
 import { Spinner } from '@gtms/ui/Spinner'
-import { UserAvatar } from '@gtms/ui/UserAvatar'
+import { UserCard } from '@gtms/ui/UserCard'
 // styles
 import styles from './styles.scss'
+import { mock, faces } from './mock.js'
 
 export const GroupMembers: FC<{
   additionalStyles: string
   errorOccured: boolean
   isLoading: boolean
-  users: IUser[]
   slug?: string
-}> = ({ additionalStyles, errorOccured, isLoading, users, slug }) => {
+  users: IUser[]
+}> = ({ additionalStyles, errorOccured, isLoading, slug, users }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   useEffect(() => {
@@ -31,62 +32,69 @@ export const GroupMembers: FC<{
       getGroupMembers(slug, 0, 8)
     }
   }, [])
-
   return (
-    <>
-      <div
-        className={cx(styles.wrapper, additionalStyles)}
-        data-testid="group-members"
-      >
-        {isModalOpen && (
-          <Modal
-            additionalStyles={styles.modal}
-            onClose={() => setIsModalOpen(false)}
-          >
-            <InviteFriends />
-          </Modal>
-        )}
+    <div
+      className={cx(styles.wrapper, additionalStyles)}
+      data-testid="group-members"
+    >
+      {users.length === 0 && !isLoading && !errorOccured && (
+        <Spinner additionalStyles={styles.spinner} />
+      )}
 
-        {isLoading && <Spinner size="sm" />}
+      {isModalOpen && (
+        <Modal
+          additionalStyles={styles.modal}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <InviteFriends />
+        </Modal>
+      )}
 
-        {errorOccured && (
-          <ErrorWrapper>
-            <h2>Sorry we can not show you groups members now</h2>
-          </ErrorWrapper>
-        )}
+      {isLoading && <Spinner size="sm" />}
 
-        {users.length > 0 && (
-          <ul className={styles.items}>
-            {users.map((user) => (
-              <li className={styles.item} key={`group-member-${user.id}`}>
-                <Link href={`/user/${user.id}`}>
-                  <a>
-                    <UserAvatar
-                      additionalStyles={styles.avatar}
-                      size="100percent"
-                      image={getImage('50x50', user.avatar, UserAvatarNoImage)}
-                    />
-                  </a>
-                </Link>
-              </li>
-            ))}
-            <li
-              className={cx(styles.item, styles.invite)}
-              key={`group-member-invite}`}
-            >
-              <Button
-                additionalStyles={styles.btnInvite}
-                onClick={() => setIsModalOpen(true)}
-              >
-                +
-              </Button>
+      {errorOccured && (
+        <ErrorWrapper>
+          <h2>Sorry we can not show you groups members now</h2>
+        </ErrorWrapper>
+      )}
+
+      {users.length > 0 && (
+        <ul className={styles.items}>
+          {mock.map((user, index) => (
+            <li className={styles.item} key={`group-member-${user.id}`}>
+              <Link href={`/user/${user.id}`}>
+                <a>
+                  <UserCard
+                    additionalStyles={styles.avatar}
+                    image={faces[index].jpg}
+                    user={user}
+                    // image={getImage('50x50', user.avatar, UserAvatarNoImage)}
+                  />
+                </a>
+              </Link>
             </li>
-          </ul>
-        )}
-
-        {users.length === 0 && !isLoading && !errorOccured && <Spinner />}
-      </div>
-      <Overlay />
-    </>
+          ))}
+          <li
+            className={cx(styles.item, styles.invite)}
+            key={`group-member-invite}`}
+          >
+            <Button
+              additionalStyles={styles.btnInvite}
+              onClick={() => setIsModalOpen(true)}
+            >
+              +
+            </Button>
+          </li>
+        </ul>
+      )}
+      {/* <Pagination
+        additionalStyles={styles.pagination}
+        getCurrentUrl={() => null}
+        limit={1}
+        offset={1}
+        onClick={() => null}
+        total={5}
+      /> */}
+    </div>
   )
 }

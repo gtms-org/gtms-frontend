@@ -16,7 +16,6 @@ export const InviteFriends: FC<{
     >
       <div className={styles.content}>
         <h2 className={styles.header}>{t('header')}</h2>
-        <span className={styles.subheader}>{t('subheader')}</span>
         <ClickToCopy
           additionalStyles={styles.btn}
           text="wejdz na www.jedziemyna.pl"

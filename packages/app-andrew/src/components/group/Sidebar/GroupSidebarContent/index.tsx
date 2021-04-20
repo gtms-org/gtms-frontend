@@ -10,6 +10,10 @@ import { FavsButton } from '@app/components/group/FavsButton'
 import { FollowButton } from '@app/components/group/FollowButton'
 import { JoinLeaveButton } from '@app/components/group/JoinLeaveButton'
 import { SettingsButton } from '@app/components/group/SettingsButton'
+// ui
+import { FaBars } from 'react-icons/fa'
+import { Button } from '@gtms/ui/Button'
+import { Overlay } from '@gtms/ui/Overlay'
 // styles
 import styles from './styles.scss'
 
@@ -28,25 +32,42 @@ export const GroupSidebarContent: FC<{}> = () => {
     }
   }, [])
 
+  const [isDropdownActive, setIsDropdownActive] = useState<boolean>(false)
+
   if (!state.group) {
     return null
   }
 
   return (
-    <div className={styles.wrapper}>
-      <FavsButton additionalStyles={styles.favsButton} group={state.group} />
-      <JoinLeaveButton
-        additionalStyles={styles.joinLeaveButton}
-        group={state.group}
-      />
-      <SettingsButton
-        additionalStyles={styles.settingsButton}
-        group={state.group}
-      />
-      <FollowButton
-        additionalStyles={styles.followButton}
-        group={state.group}
-      />
-    </div>
+    <ul className={styles.wrapper}>
+      <Button
+        additionalStyles={styles.btnDropdown}
+        onClick={() => setIsDropdownActive(!isDropdownActive)}
+      >
+        <i>
+          <FaBars />
+        </i>
+      </Button>
+      {isDropdownActive && (
+        <>
+          <FavsButton
+            additionalStyles={styles.favsButton}
+            group={state.group}
+          />
+          <JoinLeaveButton
+            additionalStyles={styles.joinLeaveButton}
+            group={state.group}
+          />
+          <SettingsButton
+            additionalStyles={styles.settingsButton}
+            group={state.group}
+          />
+          <FollowButton
+            additionalStyles={styles.followButton}
+            group={state.group}
+          />
+        </>
+      )}
+    </ul>
   )
 }

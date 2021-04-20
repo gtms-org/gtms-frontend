@@ -1,0 +1,57 @@
+@import '~@gtms/styles/scss/variables.scss';
+@import '~@gtms/styles/scss/mixins/focusElementEffects.scss';
+@import '~@gtms/styles/scss/mixins/fontSize.scss';
+@import '~@gtms/styles/scss/mixins/fontWeight.scss';
+@import '~@gtms/styles/scss/mixins/shadows.scss';
+
+.wrapper {
+  cursor: pointer;
+  border-radius: $borderRadius;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    @include shadowBoxWithDescription();
+  }
+
+  .status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &.online {
+      background: chartreuse;
+    }
+  }
+
+  &:hover {
+    @include effectColorTransparentOverlay('defaultRadius', 4px);
+  }
+
+  .headerAndDesc {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+    color: $theme0;
+    word-break: break-all;
+
+    .header {
+      @include fontSize(md);
+      @include fontWeight(semiBold);
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}

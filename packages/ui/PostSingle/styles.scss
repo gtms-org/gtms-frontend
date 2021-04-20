@@ -62,9 +62,17 @@
       margin-bottom: 15px; // align it properly in post container
 
       .date {
+        display: flex;
+        align-items: center;
         margin-left: 5px;
         @include fontSize(xxs);
         @include fontWeight(semiNormal);
+        opacity: 0.75;
+
+        i {
+          line-height: 0;
+          margin-right: 5px;
+        }
       }
     }
 

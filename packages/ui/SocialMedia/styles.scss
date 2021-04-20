@@ -1,0 +1,21 @@
+@import '~@gtms/styles/scss/variables.scss';
+@import '~@gtms/styles/scss/mixins/fontSize.scss';
+
+.socialMedia {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+
+  .item {
+    a {
+      @include fontSize(md);
+    }
+
+    &:hover {
+      a {
+        color: $theme4;
+      }
+    }
+  }
+}

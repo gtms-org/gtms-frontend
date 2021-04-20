@@ -25,7 +25,7 @@ export const NavigationWrapper: FC<{}> = () => {
     >
       <style global jsx>{`
         body {
-          // padding-left: 45px;
+          padding-left: 45px;
         }
       `}</style>
       <div className={styles.fixed}>

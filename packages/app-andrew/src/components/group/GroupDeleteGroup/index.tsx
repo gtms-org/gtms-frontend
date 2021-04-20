@@ -55,11 +55,11 @@ export const GroupDeleteGroup: FC<{
       )}
 
       <Button
+        additionalStyles={cx(styles.btnDeleteGroup, additionalStyles)}
+        testid="delete-group-button"
         onClick={() => {
           setIsModalOpen(true)
         }}
-        testid="delete-group-button"
-        additionalStyles={cx(styles.btnDeleteGroup, additionalStyles)}
       >
         {t('deleteGroupBtn')}
       </Button>

@@ -4,11 +4,29 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/shadows.scss';
 
 .pageWrapper {
   display: flex;
   width: 100%;
   background: $theme2;
+  transition: margin 500ms ease-in-out;
+
+  &.offCanvas {
+    margin-left: -250px;
+  }
+
+  .overlay {
+    z-index: -2;
+    cursor: pointer;
+    margin-left: -220px;
+    transition: margin 500ms ease-in-out;
+
+    &.active {
+      margin-left: -470px;
+      z-index: 2;
+    }
+  }
 
   .content {
     width: 100%;
@@ -33,6 +51,7 @@
           display: block;
           @include fontSize(default);
           @include fontWeight(semiBold);
+          opacity: 0.75;
         }
       }
 
@@ -63,26 +82,22 @@
         }
       }
 
-      .btnJoin {
-        @include buttonDefault();
-        @include buttonSizeDefault();
-        @include buttonShapeRoundedSides();
-        @include buttonColorsTertiary();
-        min-width: 200px;
-        margin-left: 30px;
-        margin-right: auto;
+      .socialMedia {
+        margin-left: 20px;
+        opacity: 0.7;
 
         &:hover {
-          @include buttonColorsPrimary();
+          opacity: 1;
         }
       }
     }
 
     .slider {
+      position: relative;
       display: flex;
       width: 100%;
       overflow: hidden;
-      min-height: 330px;
+      min-height: 380px;
       border-radius: $borderRadius2;
       margin-top: 30px;
       margin-bottom: 30px;
@@ -97,19 +112,86 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         width: 45%;
         padding-left: 50px;
         padding-right: 30px;
 
-        h2 {
-          @include fontSize(xlg);
-          @include fontWeight(semiBold);
-          margin-bottom: 10px;
+        div {
+          h2,
+          p {
+            position: relative;
+            z-index: 1;
+          }
+
+          h2 {
+            @include fontSize(xlg);
+            @include fontWeight(semiBold);
+            margin-bottom: 10px;
+          }
+
+          p {
+            line-height: 1.5em;
+            opacity: 0.8;
+          }
         }
 
-        p {
-          line-height: 1.5em;
-          opacity: 0.8;
+        .icons {
+          position: relative;
+          z-index: 1;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          grid-column-gap: 20px;
+          grid-row-gap: 20px;
+          margin-top: 20px;
+          @include fontSize(sm);
+
+          .element {
+            display: flex;
+            align-items: center;
+
+            i {
+              padding: 10px;
+              @include fontSize(md);
+              margin-right: 15px;
+              border-radius: $borderRadius;
+              line-height: 0;
+              background: $theme3;
+              border: 3px solid $theme3;
+            }
+
+            &:hover {
+              i {
+                border-color: $theme4;
+                color: $theme4;
+              }
+
+              span {
+                opacity: 1;
+              }
+            }
+
+            span {
+              opacity: 0.7;
+            }
+          }
+        }
+
+        .btnJoin {
+          position: relative;
+          z-index: 1;
+          @include buttonDefault();
+          @include buttonSizeDefault();
+          @include buttonShapeRoundedSides();
+          @include buttonColorsTertiary();
+          min-width: 200px;
+          margin: auto;
+          margin-top: 20px;
+
+          &:hover {
+            @include buttonColorsPrimary();
+          }
         }
       }
 
@@ -120,39 +202,26 @@
         @include imageCover();
       }
     }
+  }
 
-    // .icons {
-    //   display: flex;
-    //   gap: 15px;
-    //   @include fontSize(default);
-    //   margin: 30px 0;
+  .recentlyCreatedGroups {
+    .header {
+      align-items: flex-end;
+      @include fontSize(xmd);
+      @include fontWeight(semiBold);
+      margin-bottom: 25px;
 
-    //   .element {
-    //     display: flex;
-    //     align-items: center;
-
-    //     i {
-    //       padding: 10px;
-    //       @include fontSize(lg);
-    //       margin-right: 15px;
-    //       border-radius: $borderRadius;
-    //       line-height: 0;
-    //       background: $theme3;
-    //       border: 3px solid $theme3;
-    //     }
-
-    //     &:hover {
-    //       i {
-    //         border-color: $theme4;
-    //         color: $theme4;
-    //       }
-    //     }
-    //   }
-    // }
+      p {
+        @include fontSize(default);
+        @include fontWeight(semiNormal);
+        margin-left: 10px;
+        opacity: 0.7;
+      }
+    }
   }
 
   .recentlyRegisteredUsers {
-    width: 240px;
+    width: 250px;
     padding: 30px;
     border-left: 1px solid $theme7;
     color: $theme0;
@@ -163,8 +232,7 @@
     }
 
     p {
-      margin: 5px 0;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       opacity: 0.8;
     }
 
@@ -176,10 +244,24 @@
   }
 
   .user {
-    background: $theme3;
-    max-width: 270px;
+    position: fixed;
+    right: -250px;
+    display: flex;
+    justify-content: center;
+    transition: right 500ms ease-in-out;
+    width: 100%;
+    max-width: 250px;
+    height: 100%;
+    border-left: 1px solid $theme7;
+    background: $theme2;
 
-    display: none;
+    &.active {
+      right: 0;
+    }
+
+    .spinner {
+      margin: 20px;
+    }
 
     .desc {
       padding: 20px;
