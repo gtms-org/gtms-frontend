@@ -4,6 +4,7 @@
 @import '~@gtms/styles/scss/mixins/grid.scss';
 @import '~@gtms/styles/scss/mixins/header.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/pageBg.scss';
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
@@ -45,11 +46,18 @@
   width: 100%;
   @include imageCover();
 
+  @include for-phone-only {
+    padding: 0;
+  }
+
   .content {
     position: relative;
     z-index: 2;
     display: flex;
     width: 100%;
+    @include for-phone-only {
+      height: 100vh;
+    }
 
     > div {
       padding: 20px;

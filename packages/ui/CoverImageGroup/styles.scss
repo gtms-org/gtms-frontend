@@ -5,6 +5,7 @@
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/grid.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 
 .wrapper {
   width: 100%;
@@ -162,8 +163,12 @@
       transition-delay: 0.25s;
       opacity: 0;
       @include gridDefault(6);
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       list-style-type: none;
+
+      @include for-desktop-only {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
 
       .item {
         width: 100%;

@@ -5,8 +5,8 @@
   @include buttonDefault();
   @include buttonSizeDefault();
   @include buttonShapeDefault();
-  @include buttonWithIcon(left);
-  @include buttonWithSpinnerAndLabel(left);
+  @include buttonWithIcon('left');
+  @include buttonWithSpinnerAndLabel('left');
   @include buttonColorsSecondary();
   margin-top: 8px;
   width: 100%;

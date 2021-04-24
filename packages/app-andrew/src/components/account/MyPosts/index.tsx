@@ -252,8 +252,7 @@ export const MyPosts: FC = () => {
   }, [tagsSuggestionsAbortController])
 
   return (
-    <div className={styles.userLastPosts}>
-      <span>My last posts:</span>
+    <div>
       <SearchBar
         disabled={data.isLoading}
         additionalStyles={styles.search}
@@ -277,17 +276,10 @@ export const MyPosts: FC = () => {
       )}
       {!data.isLoading && data.docs.length > 0 && !data.errorOccured && (
         <>
-          <div className={styles.filters}>
-            <a onClick={() => setShowFilters((value) => !value)}>
-              {!showFilters ? 'Show filters' : 'Hide filters'}
-            </a>
-          </div>
-          {showFilters && (
-            <MyPostsFilters
-              active={groupNames}
-              onGroupClick={onFilterGroupClick}
-            />
-          )}
+          <MyPostsFilters
+            active={groupNames}
+            onGroupClick={onFilterGroupClick}
+          />
           <PostsList
             posts={data.docs}
             isAdmin={false}

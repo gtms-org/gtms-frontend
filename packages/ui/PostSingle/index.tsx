@@ -170,13 +170,6 @@ export const PostSingle: FC<{
           }
         />
       )}
-      {group && typeof group !== 'string' && (
-        <GroupDetails
-          additionalStyles={styles.groupDetails}
-          group={group}
-          onGroupClick={onOpenGroupPreview}
-        />
-      )}
       <div className={styles.postHeader}>
         <UserAvatar
           additionalStyles={styles.userAvatar}
@@ -287,6 +280,13 @@ export const PostSingle: FC<{
           </div>
         )}
       </div>
+      {group && typeof group !== 'string' && (
+        <GroupDetails
+          additionalStyles={styles.groupDetails}
+          group={group}
+          onGroupClick={onOpenGroupPreview}
+        />
+      )}
     </div>
   )
 }

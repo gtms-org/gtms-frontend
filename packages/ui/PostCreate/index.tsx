@@ -184,13 +184,12 @@ export const PostCreate: FC<{
       onLoadSuggestion(debouncedQuery)
     }
   }, [debouncedQuery])
-
   return (
     <div
       className={cx(styles.postCreateWrapper, additionalStyles)}
       data-testid="postCreate"
     >
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner additionalStyles={styles.spinner} size="sm" />}
 
       <div className={styles.avatarAndTextInput}>
         <Link href={`/user/${user?.id}`}>
@@ -199,6 +198,9 @@ export const PostCreate: FC<{
               size="sm"
               image={getImage('50x50', user?.avatar, noImage)}
             />
+            {user && user.name && user.surname && (
+              <span>{`${user.name} ${user.surname}`}</span>
+            )}
           </a>
         </Link>
         <textarea

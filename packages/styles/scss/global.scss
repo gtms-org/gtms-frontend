@@ -2,23 +2,6 @@
 @import './variables.scss';
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
-:global .enter {
-  opacity: 0;
-}
-
-:global .enter.enter-active {
-  opacity: 1;
-  transition: opacity 300ms ease-in;
-}
-
-:global .exit {
-  opacity: 1;
-}
-
-:global .exit.exit-active {
-  opacity: 0;
-  transition: opacity 300ms ease-out;
-}
 
 html {
   box-sizing: border-box;
@@ -31,7 +14,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
 
   & > #__next {
     min-height: 100vh;

@@ -67,7 +67,11 @@ export const PermissionsSetup: FC<{ group: IGroup }> = ({ group }) => {
                 }
                 checked={settings.visibility === GroupVisibility.public}
               />
-              <label>Group is public</label>
+              <label>
+                {settings.visibility === GroupVisibility.public
+                  ? 'Group is public'
+                  : 'Group is private'}
+              </label>
             </div>
             <span>
               <i>
@@ -78,13 +82,13 @@ export const PermissionsSetup: FC<{ group: IGroup }> = ({ group }) => {
             </span>
           </div>
         </div>
-        {isSaving && <Spinner />}
         <Button
-          type="submit"
+          additionalStyles={styles.btn}
           disabled={isSaving}
           onClick={onSubmit}
-          additionalStyles={styles.btn}
+          type="submit"
         >
+          {isSaving && <Spinner size="xsm" />}
           Save
         </Button>
       </form>

@@ -13,7 +13,7 @@
   cursor: pointer;
 
   &.isNotFullPost {
-    background: $theme3;
+    background: $theme8;
 
     &:hover {
       border-color: $theme4;
@@ -21,9 +21,9 @@
   }
 
   .groupDetails {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid $theme1;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid $theme7;
     cursor: pointer;
   }
 

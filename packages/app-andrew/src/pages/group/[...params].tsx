@@ -51,10 +51,10 @@ import {
   showPostDetailsModal,
 } from '@app/state'
 // ui
+import { useSwipeable } from 'react-swipeable'
 import Headroom from 'react-headroom'
 import { IoMdGrid } from 'react-icons/io'
 import { ErrorWrapper } from '@gtms/ui/ErrorWrapper'
-import { NavigationTabs } from '@gtms/ui/NavigationTabs'
 import { Overlay } from '@gtms/ui/Overlay'
 import { Pagination } from '@gtms/ui/Pagination'
 import { PostSingle } from '@gtms/ui/PostSingle'
@@ -138,7 +138,7 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
 
   const router = useRouter()
   const [state, setState] = useState<IGroupPageState>(groupPageState())
-  const [showWelcomeText, setShowWelcomeText] = useState<boolean>(true)
+  const [showWelcomeText, setShowWelcomeText] = useState<boolean>(false)
   const generateUrl = useCallback(
     ({
       sort,
@@ -252,8 +252,13 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
     }
   }, [])
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => alert('left'),
+    onSwipedRight: () => alert('right'),
+  })
+
   return (
-    <div className={styles.pageWrapper}>
+    <div className={styles.pageWrapper} {...swipeHandlers}>
       {state.isLoading && <Spinner />}
 
       {state.errorOccured && (
@@ -270,9 +275,7 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
       {state.hasNoAccess && <GroupNoAccess />}
 
       {showWelcomeText && (
-        <div onClick={() => setShowWelcomeText(false)}>
-          <WelcomeText />
-        </div>
+        <WelcomeText onClick={() => setShowWelcomeText(false)} />
       )}
 
       {state.group && (
@@ -283,24 +286,24 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
             isEditAllowed={groupQuery.hasAdminRights()}
           />
           <div className={styles.templogo} />
-          <TagsBar />
+          <TagsBar additionalStyles={styles.tagsBar} />
           <div className={styles.content}>
-            {' '}
-            {/* for aligning horizontally logo tags and content */}
-            <Headroom upTolerance={5} className={styles.headroom}>
+            <GroupHeader />
+            <br /> {/* for aligning horizontally logo tags and content */}
+            {/* <Headroom upTolerance={5} className={styles.headroom}>
               <GroupHeader
                 additionalStyles={cx({
                   [styles.widthMax]: !state.showPromoted && state.activePost,
                 })}
               />
-            </Headroom>
+            </Headroom> */}
             {state.showPromoted && (
               <>
                 <PromotedTags
                   additionalStyles={styles.promotedTags}
                   onTagClick={(tag) => onClick({ tag: tag.tag })}
                 />
-                <Overlay />
+                {/* <Overlay /> */}
               </>
             )}
             {state.showUsers && (
@@ -310,7 +313,7 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
                   slug={state.group.slug}
                   {...state.members}
                 />
-                <Overlay />
+                {/* <Overlay /> */}
               </>
             )}
             {!showWelcomeText && (
@@ -332,59 +335,57 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
                     !state.posts.errorOccured &&
                     state.posts.posts.length > 0 && (
                       <>
-                        <NavigationTabs>
-                          {/* @todo GEOT-764 */}
-                          {/* <h2 className={cx(styles.header, styles.active)}>
+                        {/* @todo GEOT-764 */}
+                        {/* <h2 className={cx(styles.header, styles.active)}>
+                          <i>
+                            <IoMdGrid />
+                          </i>
+                          Posts
+                        </h2>
+                        <h2 className={styles.header}>
+                          <i>
+                            <IoMdGrid />
+                          </i>
+                          Users
+                        </h2> */}
+                        <ul className={styles.navigation}>
+                          <li
+                            onClick={() => onClick({ sort: Sorting.latest })}
+                            className={cx(styles.item, {
+                              [styles.active]:
+                                state.postsSorting === Sorting.latest,
+                            })}
+                          >
                             <i>
                               <IoMdGrid />
                             </i>
-                            Posts
-                          </h2>
-                          <h2 className={styles.header}>
+                            latest
+                          </li>
+                          <li
+                            onClick={() => onClick({ sort: Sorting.active })}
+                            className={cx(styles.item, {
+                              [styles.active]:
+                                state.postsSorting === Sorting.active,
+                            })}
+                          >
                             <i>
                               <IoMdGrid />
                             </i>
-                            Users
-                          </h2> */}
-                          <ul>
-                            <li
-                              onClick={() => onClick({ sort: Sorting.latest })}
-                              className={cx({
-                                [styles.active]:
-                                  state.postsSorting === Sorting.latest,
-                              })}
-                            >
-                              <i>
-                                <IoMdGrid />
-                              </i>
-                              latest
-                            </li>
-                            <li
-                              onClick={() => onClick({ sort: Sorting.active })}
-                              className={cx({
-                                [styles.active]:
-                                  state.postsSorting === Sorting.active,
-                              })}
-                            >
-                              <i>
-                                <IoMdGrid />
-                              </i>
-                              active
-                            </li>
-                            <li
-                              onClick={() => onClick({ sort: Sorting.popular })}
-                              className={cx({
-                                [styles.active]:
-                                  state.postsSorting === Sorting.popular,
-                              })}
-                            >
-                              <i>
-                                <IoMdGrid />
-                              </i>
-                              popular
-                            </li>
-                          </ul>
-                        </NavigationTabs>
+                            active
+                          </li>
+                          <li
+                            onClick={() => onClick({ sort: Sorting.popular })}
+                            className={cx(styles.item, {
+                              [styles.active]:
+                                state.postsSorting === Sorting.popular,
+                            })}
+                          >
+                            <i>
+                              <IoMdGrid />
+                            </i>
+                            popular
+                          </li>
+                        </ul>
                         <PostCreate
                           additionalStyles={styles.postCreate}
                           groupId={state.group?.id || ''}

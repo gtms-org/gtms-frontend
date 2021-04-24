@@ -57,7 +57,7 @@ export const FollowButton: FC<{ user: IUser }> = ({ user }) => {
           }}
           checked={state.isFollowing}
         />
-        <span>Follow</span>
+        <span>{state.isFollowing ? 'Follow' : 'Unfollow'}</span>
       </label>
     </div>
   )

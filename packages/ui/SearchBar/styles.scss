@@ -20,7 +20,7 @@
     i {
       @include fontSize(md);
       position: absolute;
-      top: 10px;
+      top: 8px;
       left: 8px;
       line-height: 0;
       color: $theme1;
@@ -44,7 +44,6 @@
       &:hover {
         outline: none;
         color: $theme1;
-        border-color: $theme4;
       }
     }
 

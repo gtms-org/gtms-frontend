@@ -4,6 +4,7 @@
 
 .pageWrapper {
   @include pageWrapper();
+  background: $theme1;
 }
 
 .wrapper {
@@ -11,7 +12,6 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: $theme0;
 
   .header {
     @include header(h1, textUppercase);

@@ -1,10 +1,14 @@
 @import '~@gtms/styles/scss/variables.scss';
 @import '~@gtms/styles/scss/mixins/buttons.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 
 .wrapper {
-  border-radius: $borderRadius;
   overflow: hidden;
+
+  @include for-desktop-only {
+    display: none;
+  }
 
   .cover {
     @include imageCover();

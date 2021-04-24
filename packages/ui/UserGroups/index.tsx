@@ -12,10 +12,10 @@ import styles from './styles.scss'
 
 export const UserGroups: FC<{
   additionalStyles?: string
-  isLoading?: boolean
   groups: IGroup[]
+  isLoading?: boolean
   noImage: { [key: string]: IImage }
-}> = ({ additionalStyles, groups, noImage, isLoading = false }) => {
+}> = ({ additionalStyles, groups, isLoading = false, noImage }) => {
   return (
     <div className={cx(styles.wrapper, additionalStyles)}>
       {isLoading && <Spinner />}
@@ -36,12 +36,10 @@ export const UserGroups: FC<{
               </li>
             ))}
           </ul>
-          <div className={styles.btnWrapper}>
-            <Button type="submit" additionalStyles={styles.btn}>
-              <Spinner size="xsm" />
-              show more...
-            </Button>
-          </div>
+          <Button type="submit" additionalStyles={styles.btn}>
+            <Spinner size="xsm" />
+            show more...
+          </Button>
         </>
       )}
     </div>

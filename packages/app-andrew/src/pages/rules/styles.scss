@@ -3,7 +3,8 @@
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
 .pageWrapper {
-  @include pageWrapper(width700);
+  @include pageWrapper();
+  background: $theme1;
 }
 
 .wrapper {

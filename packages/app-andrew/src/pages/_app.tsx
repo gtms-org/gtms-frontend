@@ -3,6 +3,7 @@ import React from 'react'
 import App, { AppContext } from 'next/app'
 import Head from 'next/head'
 import { appWithTranslation } from '@gtms/commons/i18n'
+import { MobileNavigationWrapper } from '@app/components/commons/MobileNavigationWrapper'
 import { NavigationWrapper } from '@app/components/commons/NavigationWrapper'
 import { NotificationsSidebar } from '@app/components/commons/NotificationsSidebar'
 import { NotificationsActive } from '@app/components/commons/NotificationsActive'
@@ -123,6 +124,7 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
           toggleIsActive={() => this.toggleIsActive()}
         >
           <NavigationWrapper />
+          <MobileNavigationWrapper />
           <GroupPreview />
           <PostDetailsModal />
           <Component {...pageProps} />

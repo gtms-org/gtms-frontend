@@ -8,33 +8,33 @@ import { UploadFile } from '../UploadFile'
 import styles from './styles.scss'
 
 export const CoverImageGroup: FC<{
+  activeCover?: string
+  additionalStyles?: string
   cover?: string
-  stepTwo?: boolean
+  onClose: () => unknown
   options: {
     className: string
     cover: string
   }[]
-  additionalStyles?: string
+  onSave: () => unknown
+  setActiveCover: (cover: string) => unknown
+  stepTwo?: boolean
   upload: {
     onDrop: (acceptedFiles: File[]) => unknown
     isLoading: boolean
     isError: boolean
     file: ArrayBuffer | string | null
   }
-  onClose: () => unknown
-  onSave: () => unknown
-  activeCover?: string
-  setActiveCover: (cover: string) => unknown
 }> = ({
-  upload,
+  activeCover,
   additionalStyles,
+  cover,
   onClose,
   onSave,
-  cover,
   options,
-  activeCover,
   setActiveCover,
   stepTwo = false,
+  upload,
 }) => {
   const [isStepTwo, setIsStepTwo] = useState<boolean>(stepTwo)
 

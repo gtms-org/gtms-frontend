@@ -1,8 +1,10 @@
 import React, { FC, useState, useEffect } from 'react'
-import { Spinner } from '../Spinner'
-import styles from './styles.scss'
 import { useDebounce } from '@gtms/commons/hooks/useDebounce'
 import { useTranslation } from '@gtms/commons/i18n'
+// ui
+import { Button } from '../Button'
+import { Spinner } from '../Spinner'
+import styles from './styles.scss'
 
 export const TagsBar: FC<{
   tags: string[]
@@ -148,14 +150,12 @@ export const TagsBar: FC<{
         </>
       )}
       {!isInEditMode && tags.length === 0 && (
-        <span className={styles.noRecords}>
-          <a
-            className={styles.actionButton}
-            onClick={() => setIsInEditMode(true)}
-          >
-            {t('clickHereToAddNewTag')}
-          </a>
-        </span>
+        <Button
+          additionalStyles={styles.buttonNoRecords}
+          onClick={() => setIsInEditMode(true)}
+        >
+          {t('clickHereToAddNewTag')}
+        </Button>
       )}
       {!isInEditMode && tags.length > 0 && (
         <div className={styles.tagsList}>

@@ -65,14 +65,14 @@ export const Groups: FC<{
         <ul className={styles.items}>
           <li
             className={cx(styles.item, {
-              [styles.currentTab]: currentTab === Tabs.groupsMember,
+              [styles.active]: currentTab === Tabs.groupsMember,
             })}
           >
             <a onClick={() => setCurrentTab(Tabs.groupsMember)}>All</a>
           </li>
           <li
             className={cx(styles.item, {
-              [styles.currentTab]: currentTab === Tabs.groupsAdmin,
+              [styles.active]: currentTab === Tabs.groupsAdmin,
             })}
           >
             <a onClick={() => setCurrentTab(Tabs.groupsAdmin)}>
@@ -81,7 +81,7 @@ export const Groups: FC<{
           </li>
           <li
             className={cx(styles.item, {
-              [styles.currentTab]: currentTab === Tabs.groupsOwner,
+              [styles.active]: currentTab === Tabs.groupsOwner,
             })}
           >
             <a onClick={() => setCurrentTab(Tabs.groupsOwner)}>I own</a>

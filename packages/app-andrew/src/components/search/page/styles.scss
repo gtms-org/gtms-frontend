@@ -5,11 +5,14 @@
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
 .pageWrapper {
-  @include pageWrapper(width700);
+  @include pageWrapper();
+  background: $theme2;
 }
 
 .wrapper {
   width: 100%;
+  max-width: 780px;
+  margin: auto;
 
   .searchBarWrapper {
     display: flex;
@@ -63,6 +66,7 @@
       a {
         display: flex;
         align-items: center;
+        @include fontSize(xxs);
 
         i {
           line-height: 0;

@@ -8,8 +8,8 @@ import { GroupAvatarNoImage } from '@app/enums'
 //state
 import { showGroupPreview } from '@app/state/groupPreview'
 // ui
-import { Spinner } from '@gtms/ui/Spinner'
 import { Picture } from '@gtms/ui/Picture'
+import { Spinner } from '@gtms/ui/Spinner'
 // styles
 import styles from './styles.scss'
 
@@ -48,31 +48,23 @@ export const MyPostsFilters: FC<{
         <p>Error occured, please try later</p>
       )}
       {data.filters && (
-        <ul className={styles.groupFilter}>
+        <ul>
           {data.filters.map((group) => (
             <li
-              key={`group-filter-${group.id}`}
-              className={cx({
+              className={cx(styles.item, {
                 [styles.active]: active.includes(group.name),
               })}
+              key={`group-filter-${group.id}`}
             >
-              <div>
-                <a onClick={() => showGroupPreview(group)}>
-                  <Picture
-                    {...getImage('50x50', group.avatar, GroupAvatarNoImage)}
-                  />
-                </a>
-              </div>
-              <div>
-                <h3>
-                  <a onClick={() => onGroupClick(group.name, group.id)}>
-                    {group.name}
-                  </a>
-                </h3>
-                <p>
-                  <span>{group.count}</span> posts created
-                </p>
-              </div>
+              <a onClick={() => showGroupPreview(group)}>
+                <Picture
+                  {...getImage('50x50', group.avatar, GroupAvatarNoImage)}
+                />
+              </a>
+              <a onClick={() => onGroupClick(group.name, group.id)}>
+                {group.name}
+              </a>
+              {group.count} posts created
             </li>
           ))}
         </ul>

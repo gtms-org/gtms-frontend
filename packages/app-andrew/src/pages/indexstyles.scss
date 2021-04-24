@@ -4,6 +4,7 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/shadows.scss';
 
 .pageWrapper {
@@ -30,18 +31,26 @@
 
   .content {
     width: 100%;
-    padding: 30px;
+    padding: 0 10px;
 
     .header {
-      display: flex;
       @include fontWeight(semiBold);
       width: 100%;
+      margin-top: 15px;
+
+      @include for-desktop-only {
+        display: flex;
+      }
 
       .logo {
         margin-right: 30px;
-        @include fontSize(lg);
+        @include fontSize(xlg);
         @include fontWeight(semiBold);
         text-transform: uppercase;
+
+        @include for-desktop-only {
+          @include fontSize(lg);
+        }
 
         .bold {
           @include fontWeight(bold);
@@ -49,45 +58,13 @@
 
         .subtitle {
           display: block;
-          @include fontSize(default);
+          @include fontSize(xdefault);
           @include fontWeight(semiBold);
           opacity: 0.75;
-        }
-      }
 
-      .search {
-        display: flex;
-        align-items: center;
-        margin-left: auto;
-        width: 100%;
-        height: 40px;
-        padding: 5px 12px;
-        border-radius: $borderRadius3;
-        border: 2px solid $theme7;
-        @include fontSize(md);
-        background: $theme7;
-
-        i {
-          line-height: 0;
-        }
-
-        span {
-          margin-left: 5px;
-          @include fontSize(sm);
-          @include fontWeight(semiNormal);
-        }
-
-        &:hover {
-          border-color: $theme4;
-        }
-      }
-
-      .socialMedia {
-        margin-left: 20px;
-        opacity: 0.7;
-
-        &:hover {
-          opacity: 1;
+          @include for-desktop-only {
+            @include fontSize(default);
+          }
         }
       }
     }
@@ -99,8 +76,8 @@
       overflow: hidden;
       min-height: 380px;
       border-radius: $borderRadius2;
-      margin-top: 30px;
-      margin-bottom: 30px;
+      margin-top: 15px;
+      margin-bottom: 15px;
       background: $black;
       cursor: pointer;
 
@@ -177,22 +154,6 @@
             }
           }
         }
-
-        .btnJoin {
-          position: relative;
-          z-index: 1;
-          @include buttonDefault();
-          @include buttonSizeDefault();
-          @include buttonShapeRoundedSides();
-          @include buttonColorsTertiary();
-          min-width: 200px;
-          margin: auto;
-          margin-top: 20px;
-
-          &:hover {
-            @include buttonColorsPrimary();
-          }
-        }
       }
 
       .right {
@@ -202,20 +163,57 @@
         @include imageCover();
       }
     }
-  }
 
-  .recentlyCreatedGroups {
-    .header {
-      align-items: flex-end;
-      @include fontSize(xmd);
-      @include fontWeight(semiBold);
-      margin-bottom: 25px;
+    .recentlyCreatedGroups {
+      .search {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 100%;
+        height: 40px;
+        padding: 5px 12px;
+        border-radius: $borderRadius3;
+        border: 2px solid $theme7;
+        @include fontSize(md);
+        background: $theme7;
 
-      p {
-        @include fontSize(default);
-        @include fontWeight(semiNormal);
-        margin-left: 10px;
+        i {
+          line-height: 0;
+        }
+
+        span {
+          margin-left: 5px;
+          @include fontSize(sm);
+          @include fontWeight(semiNormal);
+        }
+
+        &:hover {
+          border-color: $theme4;
+        }
+      }
+
+      .socialMedia {
+        margin-left: 20px;
         opacity: 0.7;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .header {
+        @include fontSize(xmd);
+        @include fontWeight(semiBold);
+        margin-bottom: 15px;
+
+        .desc {
+          display: block;
+          @include fontSize(default);
+          @include fontWeight(semiNormal);
+          opacity: 0.7;
+        }
       }
     }
   }
@@ -225,6 +223,8 @@
     padding: 30px;
     border-left: 1px solid $theme7;
     color: $theme0;
+
+    display: none;
 
     h3 {
       @include fontSize(xdefault);
@@ -264,7 +264,7 @@
     }
 
     .desc {
-      padding: 20px;
+      padding: 20px 20px 0 20px;
 
       h3 {
         @include fontSize(lg);
@@ -276,6 +276,22 @@
         margin: 10px 0;
         opacity: 0.8;
       }
+    }
+  }
+
+  .btn {
+    position: relative;
+    z-index: 1;
+    @include buttonDefault();
+    @include buttonSizeDefault();
+    @include buttonShapeRoundedSides();
+    @include buttonColorsTertiary();
+    min-width: 200px;
+    margin: auto;
+    margin-top: 20px;
+
+    &:hover {
+      @include buttonColorsPrimary();
     }
   }
 }

@@ -32,13 +32,6 @@ export const GroupDetails: FC<{
       data-testid="group-details"
       className={cx(styles.wrapper, additionalStyles)}
     >
-      <div className={styles.groupAvatar}>
-        <Link href={`/group/${group.slug}`}>
-          <a onClick={onClick}>
-            <Picture {...getImage('50x50', group.avatar)} alt={name} />
-          </a>
-        </Link>
-      </div>
       <div className={styles.details}>
         <Link href={`/group/${group.slug}`}>
           <a onClick={onClick}>
@@ -53,6 +46,13 @@ export const GroupDetails: FC<{
             Members: <span>{group.membersCounter}</span>
           </li>
         </ul>
+      </div>
+      <div className={styles.groupAvatar}>
+        <Link href={`/group/${group.slug}`}>
+          <a onClick={onClick}>
+            <Picture {...getImage('50x50', group.avatar)} alt={name} />
+          </a>
+        </Link>
       </div>
     </div>
   )

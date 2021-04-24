@@ -315,6 +315,12 @@ export const UiElements: NextPage<{}> = () => {
             <FaLinkedin />
           </i>
         </li>
+        <li>
+          19
+          <i>
+            <FaRegClock />
+          </i>
+        </li>
       </ul>
 
       <h3>/fi</h3>

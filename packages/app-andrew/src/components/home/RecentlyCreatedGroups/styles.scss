@@ -1,11 +1,15 @@
 @import '~@gtms/styles/scss/variables.scss';
+@import '~@gtms/styles/scss/mixins/grid.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/zindex.scss';
 
 .recentlyCreatedGroups {
   .items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-    grid-gap: 20px;
+    @include gridDefault(2);
+
+    @include for-desktop-only {
+      @include gridDefault(6);
+    }
 
     .gridCard {
       min-height: 200px;

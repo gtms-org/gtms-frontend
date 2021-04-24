@@ -3,36 +3,37 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 @import '~@gtms/styles/scss/mixins/zindex.scss';
 
 .pageWrapper {
   @include pageWrapper();
-  flex-direction: column;
-  background: none; // reset bg from mixin pageWrapper()
-  margin: 0; // reset margin from mixin pageWrapper()
-  padding: 0; // reset padding from mixin pageWrapper()
+  @include for-desktop-only {
+    // @todo remove unneeded shit
+    flex-direction: column;
+    background: none; // reset bg from mixin pageWrapper()
+    margin: 0; // reset margin from mixin pageWrapper()
+    padding: 0; // reset padding from mixin pageWrapper()
 
-  position: relative;
-  display: flex;
-  width: 100%;
-  margin: 0 100px;
-  border-radius: 10px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 0 100px;
+    border-radius: 10px;
+  }
 
   .widthMax {
     max-width: 1100px;
   }
 
   .groupCover {
-    margin-bottom: 10px;
     max-width: $tempWidth;
   }
 
   .wrapper {
     position: relative;
     z-index: 0;
-    display: flex;
-    gap: 8px;
     max-width: $tempWidth;
     height: 100%;
 
@@ -40,26 +41,60 @@
       max-width: 1100px;
     }
 
-    .templogo {
-      position: absolute;
-      left: -42px;
-      top: 10px;
-      z-index: 11;
-      min-width: $size1;
-      min-height: $size1;
-      background-image: url('/images/theme-images/logo-patrol.png');
-      border-radius: $borderRadius;
-      @include imageCover();
+    @include for-desktop-only {
+      display: flex;
+      gap: 8px;
+
+      .templogo {
+        position: absolute;
+        left: -42px;
+        top: 10px;
+        z-index: 11;
+        min-width: $size1;
+        min-height: $size1;
+        background-image: url('/images/theme-images/logo-patrol.png');
+        border-radius: $borderRadius;
+        @include imageCover();
+      }
+    }
+
+    @include for-phone-only {
+      .templogo {
+        position: absolute;
+        left: -0;
+        top: 10px;
+        z-index: 11;
+        min-width: $size1;
+        min-height: $size1;
+        background-image: url('/images/theme-images/logo-patrol.png');
+        border-radius: $borderRadius;
+        @include imageCover();
+      }
+    }
+
+    @include for-phone-only {
+      .tagsBar {
+        display: none;
+      }
     }
 
     .content {
       width: 100%;
+
+      @include for-phone-only {
+        padding: 10px;
+        background: $theme2;
+      }
 
       .headroom {
         position: relative;
         z-index: 2;
         margin-top: 10px;
         margin-bottom: 10px;
+
+        @include for-phone-only {
+          display: none;
+        }
 
         > div {
           position: relative;
@@ -99,6 +134,35 @@
         width: 100%;
         border-radius: $borderRadius;
 
+        // @include for-phone-only {
+        //   display: none;
+        // }
+
+        .navigation {
+          display: flex;
+          align-items: center;
+
+          .item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            margin-right: 8px;
+            border-radius: $borderRadius;
+            background: $theme3;
+            color: $theme0;
+
+            i {
+              line-height: 0;
+              margin-right: 3px;
+            }
+
+            &.active,
+            &:hover {
+              background: $theme4;
+            }
+          }
+        }
+
         .loading {
           width: 60px;
           margin: 25px auto;
@@ -107,7 +171,7 @@
         .postCreate {
           display: flex;
           padding: 8px;
-          background: $theme3;
+          background: $theme8;
           border-radius: $borderRadius;
         }
 
@@ -155,12 +219,14 @@
 
     .promotedTags,
     .groupMembers {
-      position: fixed;
-      z-index: 111;
-      top: 10px;
-      left: 0;
-      padding: 50px 60px;
-      width: 100%;
+      @include for-desktop-only {
+        position: fixed;
+        z-index: 111;
+        top: 10px;
+        left: 0;
+        padding: 50px 60px;
+        width: 100%;
+      }
     }
   }
 }

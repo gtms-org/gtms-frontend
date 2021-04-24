@@ -54,11 +54,11 @@ export const PromotedTags: FC<{
     onNoRecordsClick && onNoRecordsClick()
   }, [onNoRecordsClick])
 
-  useEffect(() => {
-    disableBodyScroll(document.body)
+  // useEffect(() => {
+  //   disableBodyScroll(document.body)
 
-    return () => enableBodyScroll(document.body)
-  }, [])
+  //   return () => enableBodyScroll(document.body)
+  // }, [])
 
   return (
     <div
@@ -102,10 +102,10 @@ export const PromotedTags: FC<{
           </div>
         </Modal>
       )}
-      <div className={cx(styles.items)}>
+      <ul className={cx(styles.items)}>
         {tags.length > 0 &&
           [...tags, ...tags].map((tag) => (
-            <div
+            <li
               className={cx(styles.item, {
                 [styles.active]: activeTags.includes(tag.tag),
               })}
@@ -152,7 +152,7 @@ export const PromotedTags: FC<{
                   size={'200x200'}
                 />
               </div>
-            </div>
+            </li>
           ))}
 
         {tags.length > 0 && isAdmin && (
@@ -167,7 +167,7 @@ export const PromotedTags: FC<{
             Add more tags
           </button>
         )}
-      </div>
+      </ul>
       <Button
         additionalStyles={styles.btnShowMore}
         data-testid="show-more-tags-button"

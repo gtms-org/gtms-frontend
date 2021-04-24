@@ -55,15 +55,14 @@
     }
   }
 
-  .noRecords {
-    text-align: center;
+  .buttonNoRecords {
+    @include buttonDefault();
+    @include buttonSizeDefault();
+    @include buttonShapeDefault();
+    @include buttonColorsDefault();
 
-    a.actionButton {
-      display: block;
-      background-color: $theme3;
-      padding: 5px;
-      cursor: pointer;
-      line-height: 20px;
+    &:hover {
+      @include buttonColorsPrimary();
     }
   }
 

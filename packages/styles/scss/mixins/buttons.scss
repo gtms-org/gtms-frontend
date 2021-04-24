@@ -77,7 +77,7 @@
   min-height: 25px;
   padding: 5px;
   line-height: 1;
-  @include fontSize(sm);
+  @include fontSize(xxs);
 }
 
 @mixin buttonSizeMd() {
@@ -85,6 +85,13 @@
   padding: 10px;
   line-height: 1;
   @include fontSize(sm);
+}
+
+@mixin buttonSizeLg() {
+  min-height: 45px;
+  padding: 20px;
+  line-height: 1;
+  @include fontSize(xdefault);
 }
 
 // SHAPES

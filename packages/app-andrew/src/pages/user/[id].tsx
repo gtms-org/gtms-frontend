@@ -27,20 +27,17 @@ const UserPage: NextPage<UserPageProps> = ({ initialState }) => {
   }, [])
 
   return (
-    <>
-      <div className={styles.pageWrapper}>
-        <div className={styles.wrapper}>
-          <Profile user={state} />
-          <FollowButton user={state} />
-          <Groups
-            groupsMember={state.groupsMember}
-            groupsAdmin={state.groupsAdmin}
-            groupsOwner={state.groupsOwner}
-          />
-        </div>
+    <div className={styles.pageWrapper}>
+      <div className={styles.wrapper}>
+        <Profile user={state} />
+        <FollowButton user={state} />
+        <Groups
+          groupsMember={state.groupsMember}
+          groupsAdmin={state.groupsAdmin}
+          groupsOwner={state.groupsOwner}
+        />
       </div>
-      <div className={styles.pageBg} />
-    </>
+    </div>
   )
 }
 

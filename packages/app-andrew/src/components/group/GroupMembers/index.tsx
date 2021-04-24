@@ -87,14 +87,15 @@ export const GroupMembers: FC<{
           </li>
         </ul>
       )}
-      {/* <Pagination
+
+      <Pagination
         additionalStyles={styles.pagination}
         getCurrentUrl={() => null}
         limit={1}
         offset={1}
         onClick={() => null}
         total={5}
-      /> */}
+      />
     </div>
   )
 }

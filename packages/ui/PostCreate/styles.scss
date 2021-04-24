@@ -3,12 +3,33 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/inputs.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 
 .postCreateWrapper {
+  .spinner {
+    margin: 5px auto;
+  }
+
   .avatarAndTextInput {
-    display: flex;
-    align-items: center;
     width: 100%;
+
+    @include for-desktop-only {
+      display: flex;
+      gap: 5px;
+
+      a span {
+        display: none;
+      }
+    }
+
+    @include for-phone-only {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+    }
 
     .textarea {
       display: block;
@@ -18,7 +39,6 @@
       border: 2px solid $theme1;
       border-radius: $borderRadius;
       padding: 10px;
-      margin-left: 10px;
       background: $theme1;
       @include placeholderFocus;
 

@@ -39,12 +39,12 @@ export const RemindPasswordPage: NextPage<{}> = () => {
             )}
             <Button additionalStyles={styles.btn}>
               <Link href={`/login`}>
-                <>
+                <a>
                   <i>
                     <IoMdArrowBack />
                   </i>
                   {t('goToLoginPage')}
-                </>
+                </a>
               </Link>
             </Button>
           </div>

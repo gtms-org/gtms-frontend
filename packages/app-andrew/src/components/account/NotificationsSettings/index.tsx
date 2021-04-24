@@ -38,12 +38,12 @@ export const NotificationsSettings: FC<{
 
   if (!state.isSupported) {
     return (
-      <div data-testid="notifications-settings">
-        <p>
+      <ErrorWrapper>
+        <h2 data-testid="notifications-settings">
           Sorry, but your browser does not support push notification, we can not
           enable it for you. Try to update your browser
-        </p>
-      </div>
+        </h2>
+      </ErrorWrapper>
     )
   }
 

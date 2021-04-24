@@ -3,15 +3,13 @@
 @import '~@gtms/styles/scss/variables.scss';
 
 .navigation {
-  display: flex;
-  align-items: center;
   margin-bottom: 20px;
   cursor: pointer;
 
   .items {
     display: flex;
+    flex-direction: column;
     gap: 8px;
-    align-items: center;
     @include fontSize(xdefault);
 
     .item {

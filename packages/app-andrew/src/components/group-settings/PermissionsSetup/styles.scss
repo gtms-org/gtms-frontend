@@ -39,6 +39,7 @@
   @include buttonSizeDefault();
   @include buttonShapeDefault();
   @include buttonColorsSecondary();
+  @include buttonWithSpinnerAndLabel(left);
 
   &:hover {
     @include buttonColorsPrimary();

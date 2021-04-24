@@ -8,7 +8,7 @@
     @include buttonDefault();
     @include buttonSizeSm();
     @include buttonShapeDefault();
-    @include buttonWithIcon();
+    @include buttonWithIcon('left');
     @include buttonColorsDefault();
     @include fontSize(xmd);
     width: 100%;

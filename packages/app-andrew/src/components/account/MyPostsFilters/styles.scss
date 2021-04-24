@@ -1,46 +1,15 @@
 @import '~@gtms/styles/scss/variables.scss';
-@import '~@gtms/styles/scss/mixins/fontSize.scss';
-@import '~@gtms/styles/scss/mixins/fontWeight.scss';
 
-.groupFilter {
+.item {
   display: flex;
-  padding: 10px;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
 
-  a {
-    cursor: pointer;
+  &.active {
+    border: 1px solid #fff;
+    border-radius: 5%;
   }
 
-  li {
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-
-    &.active {
-      border: 1px solid #fff;
-      border-radius: 5%;
-    }
-
-    img {
-      margin-right: 10px;
-    }
-
-    h3 {
-      @include fontWeight(semiBold);
-      @include fontSize(md);
-    }
-
-    p {
-      margin: 0;
-    }
-
-    span {
-      color: $theme6;
-      @include fontSize(md);
-      @include fontWeight(bold);
-    }
+  img {
+    margin-right: 10px;
   }
 }

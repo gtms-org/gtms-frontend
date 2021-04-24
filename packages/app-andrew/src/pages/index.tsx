@@ -14,7 +14,7 @@ import { IoIosSearch } from 'react-icons/io'
 import { Button } from '@gtms/ui/Button'
 import { Spinner } from '@gtms/ui/Spinner'
 import { Overlay } from '@gtms/ui/Overlay'
-import { SocialMedia } from '@gtms/ui/SocialMedia'
+// import { SocialMedia } from '@gtms/ui/SocialMedia'
 import styles from './indexstyles.scss'
 
 type HomePageProps = {
@@ -48,13 +48,7 @@ export const HomePage: NextPage<HomePageProps> = ({ groups, users }) => {
               Pierwsze festiwalowe spotted!
             </span>
           </h2>
-          <div className={styles.search}>
-            <i>
-              <IoIosSearch />
-            </i>
-            <span>search...</span>
-          </div>
-          <SocialMedia additionalStyles={styles.socialMedia} />
+          {/* <SocialMedia additionalStyles={styles.socialMedia} /> */}
         </div>
         <div className={styles.slider}>
           <div className={styles.left}>
@@ -92,7 +86,7 @@ export const HomePage: NextPage<HomePageProps> = ({ groups, users }) => {
                   <span>Cupidatat aute voluptate anim exercitation</span>
                 </li>
               </ul>
-              <Button additionalStyles={styles.btnJoin}>
+              <Button additionalStyles={styles.btn}>
                 Dołącz do festiwalowego spotted
               </Button>
             </div>
@@ -102,10 +96,16 @@ export const HomePage: NextPage<HomePageProps> = ({ groups, users }) => {
         <div className={styles.recentlyCreatedGroups}>
           <h3 className={styles.header}>
             Znajdź wirtualną swoją wirtualną wioskę
-            <p className={styles.desc}>
+            <span className={styles.desc}>
               Irure ea aliqua sunt ullamco exercitation.
-            </p>
+            </span>
           </h3>
+          <div className={styles.search}>
+            <i>
+              <IoIosSearch />
+            </i>
+            <span>search...</span>
+          </div>
           <RecentlyCreatedGroups createYourOwnGroup={true} groups={groups} />
         </div>
       </div>
@@ -146,6 +146,7 @@ export const HomePage: NextPage<HomePageProps> = ({ groups, users }) => {
                 proident amet voluptate ex consectetur labore anim fugiat.
               </p>
             </div>
+            <Button additionalStyles={styles.btn}>See full profile</Button>
           </div>
         )}
       </div>

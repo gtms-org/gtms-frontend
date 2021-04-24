@@ -15,21 +15,17 @@
     @include gridDefault(3);
   }
 
-  .btnWrapper {
-    text-align: center;
+  .btn {
+    @include buttonDefault();
+    @include buttonSizeDefault();
+    @include buttonShapeDefault();
+    @include buttonWithSpinnerAndLabel(left);
+    @include buttonColorsDefault();
     margin-top: 20px;
+    width: 100%;
 
-    .btn {
-      @include buttonDefault();
-      @include buttonSizeDefault();
-      @include buttonShapeDefault();
-      @include buttonWithSpinnerAndLabel(left);
-      @include buttonColorsDefault();
-      width: 100%;
-
-      &:hover {
-        @include buttonColorsPrimary();
-      }
+    &:hover {
+      @include buttonColorsPrimary();
     }
   }
 }

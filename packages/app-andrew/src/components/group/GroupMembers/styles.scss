@@ -4,6 +4,7 @@
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/focusElementEffects.scss';
 @import '~@gtms/styles/scss/mixins/grid.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 
 .wrapper {
   .spinner {
@@ -20,7 +21,11 @@
   }
 
   .items {
-    @include gridDefault(6);
+    @include gridDefault(2);
+
+    @include for-desktop-only {
+      @include gridDefault(6);
+    }
 
     .item {
       position: relative;
@@ -36,7 +41,7 @@
 
       &:hover {
         .avatar {
-          @include effectColorTransparentOverlay('defaultRadius');
+          @include effectColorTransparentOverlay('defaultRadius', 4px);
         }
       }
 
@@ -58,5 +63,9 @@
         }
       }
     }
+  }
+
+  .pagination {
+    margin: 20px 0;
   }
 }

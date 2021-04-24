@@ -23,11 +23,12 @@ export const NavigationWrapper: FC<{}> = () => {
       className={styles.mainNavigationWrapper}
       data-testid="navigation-wrapper"
     >
-      <style global jsx>{`
+      {/* @todo uncomment soon */}
+      {/* <style global jsx>{`
         body {
           padding-left: 45px;
         }
-      `}</style>
+      `}</style> */}
       <div className={styles.fixed}>
         {' '}
         {/* for position fixed - css purouse */}

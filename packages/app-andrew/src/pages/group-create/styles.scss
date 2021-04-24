@@ -2,6 +2,7 @@
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/pageBg.scss';
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
@@ -11,13 +12,23 @@
   align-items: center;
   padding: 40px;
 
+  @include for-phone-only {
+    padding: 0;
+  }
+
   .form {
     position: relative;
     z-index: 1;
     width: 35%;
+    height: 100%;
     padding: 30px;
     border-radius: $borderRadius;
     background: rgba($theme3, 0.9);
+
+    @include for-phone-only {
+      width: 100%;
+      border-radius: 0;
+    }
 
     .image img {
       display: flex;
@@ -27,7 +38,7 @@
     }
 
     .header {
-      @include fontWeight(semiBold);
+      @include fontWeight(bold);
       @include fontSize(xlg);
       margin-top: 20px;
       text-transform: uppercase;
@@ -43,5 +54,9 @@
 
   .pageBg {
     @include pageBg('/images/theme-images/create-group-bg.png');
+
+    @include for-phone-only {
+      display: none;
+    }
   }
 }

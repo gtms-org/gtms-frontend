@@ -1,5 +1,6 @@
 @import '~@gtms/styles/scss/variables.scss';
 @import '~@gtms/styles/scss/mixins/buttons.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
 .wrapper {
@@ -8,20 +9,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: $black;
 
   .image {
     img {
+      width: 100%;
       max-width: 600px;
     }
   }
 
   .btn {
     @include buttonDefault();
-    @include buttonSizeDefault();
-    @include buttonShapeDefault();
-    @include buttonSizeDefault();
+    @include buttonSizeLg();
+    @include buttonShapeRoundedSides();
+    @include buttonColorsTertiary();
     @include buttonWithIcon('left');
-    @include buttonColorsDefault();
+    margin-top: 50px;
 
     &:hover {
       @include buttonColorsPrimary();

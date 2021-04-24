@@ -31,8 +31,11 @@
           padding: 5px 15px;
           border-radius: $borderRadius;
           background: $theme1;
+        }
 
-          &:hover {
+        &:hover,
+        &.active {
+          a {
             background: $theme4;
             color: $theme0;
           }

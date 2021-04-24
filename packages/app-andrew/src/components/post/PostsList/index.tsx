@@ -121,7 +121,6 @@ export const PostsList: FC<{
           onOpenGroupPreview: showGroupPreviewFunc,
         })
       )}
-
       {abuseReportState.isOpen && (
         <Modal onClose={onCloseReportAbuse}>
           <AbuseReportForm

@@ -7,22 +7,11 @@
   display: flex;
   align-items: center;
 
-  .groupAvatar {
-    overflow: hidden;
-    max-height: 30px;
-    max-width: 30px;
-    margin-right: 5px;
-    border-radius: $borderRadius;
-
-    &:hover {
-      @include effectColorTransparentOverlay();
-    }
-  }
-
   .details {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-left: auto;
 
     .name {
       @include fontSize(sm);
@@ -39,6 +28,18 @@
           @include fontWeight(semiBold);
         }
       }
+    }
+  }
+
+  .groupAvatar {
+    overflow: hidden;
+    max-height: 30px;
+    max-width: 30px;
+    margin-left: 5px;
+    border-radius: $borderRadius;
+
+    &:hover {
+      @include effectColorTransparentOverlay();
     }
   }
 }
