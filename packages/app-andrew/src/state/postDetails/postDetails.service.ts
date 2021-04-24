@@ -3,7 +3,7 @@ import { getPostComments } from '@gtms/state-comment'
 import { postDetailsStore } from './postDetails.store'
 import { Status } from './postDetails.model'
 
-export function showPostDetailsModal(id: string) {
+export function showPostDetailsModal(id: string, getPostOwner = false) {
   postDetailsStore.update({
     isOpen: true,
     status: Status.isLoading,
@@ -11,7 +11,7 @@ export function showPostDetailsModal(id: string) {
     post: undefined,
   })
 
-  Promise.all([fetchPost(id), getPostComments(id)])
+  Promise.all([fetchPost(id, false, getPostOwner), getPostComments(id)])
     .then(([post]) => {
       postDetailsStore.update({
         isOpen: true,

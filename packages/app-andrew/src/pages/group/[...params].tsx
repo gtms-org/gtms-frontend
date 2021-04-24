@@ -234,7 +234,7 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
   )
 
   const onPostClick = useCallback((id: string) => {
-    showPostDetailsModal(id)
+    showPostDetailsModal(id, true)
   }, [])
   const onTagClick = useCallback((tag: string) => onClick({ tag }), [onClick])
 

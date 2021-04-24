@@ -18,7 +18,6 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import useKey from 'use-key-hook'
 import { hidePostDetailsModal, Status } from '@app/state/postDetails'
 // ui
-import { Overlay } from '@gtms/ui/Overlay'
 import { PostDetails } from '@app/components/post/PostDetails'
 import { Spinner } from '@gtms/ui/Spinner'
 // styles
