@@ -30,7 +30,6 @@ export interface INotificationsSidebarProps {
 
 export interface INavigationDotsProps {
   isVisible: boolean
-  isOpen: boolean
   isLogged: boolean
   isLoaded: boolean
   groups: IGroup[]
@@ -86,7 +85,6 @@ export class BaseUIQuery {
         !status.errorOccurred &&
         !status.isLoading &&
         status.isLoaded,
-      isOpen: this.uiQuery.isGroupsBarOpen(),
       isLoaded: status.isLoaded,
       isLogged,
       groups: this.myGroupsQuery.favGroups(),
@@ -95,19 +93,17 @@ export class BaseUIQuery {
 
   public navigationDots$: Observable<INavigationDotsProps> = combineLatest([
     this.userQuery.isLogged$,
-    this.uiQuery.isGroupsBarOpen$,
     this.myGroupsQuery.status$,
     this.myGroupsQuery.favGroups$,
   ]).pipe(map(() => this.navigationDots()))
 
   public isOffCanvasOpen = (): boolean => {
-    return this.notificationsSidebar().isOpen || this.uiQuery.isGroupsBarOpen()
+    return this.notificationsSidebar().isOpen
   }
 
   public isOffCanvasOpen$: Observable<boolean> = combineLatest([
     this.notificationsQuery.select(),
     this.uiQuery.isNotificationsBarOpen$,
-    this.uiQuery.isGroupsBarOpen$,
   ]).pipe(map(() => this.isOffCanvasOpen()))
 }
 //
