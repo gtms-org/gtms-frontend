@@ -50,7 +50,7 @@ export const UserDescription: FC<{
           <form onSubmit={handleSubmit(onSubmit)}>
             <ExpandingTextarea
               additionalStyles={styles.textarea}
-              defaultValue={''}
+              defaultValue={description}
               name="description"
               placeholder={'Describe yourself :)'}
               reference={register({ required: false })}

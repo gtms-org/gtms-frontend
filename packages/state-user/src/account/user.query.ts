@@ -107,6 +107,7 @@ export class UserQuery extends Query<IUserStore> {
     roles: values.roles,
     tags: values.tags,
     avatar: values.avatar,
+    description: values.description,
   })
 
   public accountDetails$: Observable<IAccountDetails> = this.select((values) =>

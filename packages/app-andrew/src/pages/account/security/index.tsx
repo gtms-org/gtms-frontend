@@ -6,6 +6,7 @@ import { ILoginHistory, IActiveSession } from '@gtms/commons/models'
 import { ChangePassword } from '@app/components/account/ChangePassword'
 import { DeleteAccount } from '@app/components/account/DeleteAccount'
 import { Navigation, Tabs } from '@app/components/account/Navigation'
+import { LoggedUserAccountDetails } from '@app/components/account/LoggedUserAccountDetails'
 import {
   fetchLoginHistoryAPI,
   fetchActiveSessionsAPI,
@@ -99,6 +100,7 @@ export const AccountSecurityPage: NextPage<IAccountSecurityPageProps> = () => {
   return (
     <div className={styles.pageWrapper} data-testid="account-security-page">
       <div className={styles.wrapper}>
+        <LoggedUserAccountDetails />
         <Navigation current={Tabs.security} />
         <ChangePassword additionalStyles={styles.changePassword} />
         <UserSessions {...userSession} onDeleteClick={onDeleteSessionClick} />

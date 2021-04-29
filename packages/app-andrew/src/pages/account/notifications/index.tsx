@@ -4,6 +4,7 @@ import { NotificationsSettings } from '@app/components/account/NotificationsSett
 import { Navigation, Tabs } from '@app/components/account/Navigation'
 import { redirect } from '@gtms/commons/helpers/redirect'
 import { hasAuthSessionCookies } from '@gtms/state-user'
+import { LoggedUserAccountDetails } from '@app/components/account/LoggedUserAccountDetails'
 // styles
 import styles from './styles.scss'
 
@@ -15,6 +16,7 @@ export const AccountNotificationsPage: NextPage<IAccountNotificationsPageProps> 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.wrapper}>
+        <LoggedUserAccountDetails />
         <Navigation current={Tabs.notifications} />
         <NotificationsSettings />
       </div>
