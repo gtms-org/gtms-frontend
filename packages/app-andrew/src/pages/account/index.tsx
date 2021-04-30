@@ -1,24 +1,18 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { NextPage, NextPageContext } from 'next'
 import { useTranslation } from '@gtms/commons/i18n'
-import { FileStatus } from '@gtms/commons/enums'
-import { UserEmail } from '@app/components/account/UserEmail'
-import { UserName } from '@app/components/account/UserName'
 import { Navigation, Tabs } from '@app/components/account/Navigation'
-import { UserDescription } from '@app/components/account/UserDescription'
 import { MyPosts } from '@app/components/account/MyPosts'
+import { LoggedUserAccountDetails } from '@app/components/account/LoggedUserAccountDetails'
 import {
-  userQuery,
   markAsLoading,
   hasAuthSessionCookies,
   getAccountDetails,
   updateAccountDetails,
-  updateAccountAvatar,
 } from '@gtms/state-user'
 import { redirect } from '@gtms/commons/helpers/redirect'
 import { useInitState } from '@gtms/commons/hooks'
 import { findTagsAPI } from '@gtms/api-tags'
-import { UserAvatarNoImage, GroupAvatarNoImage } from '@app/enums'
 import {
   accountPageState,
   accountPageState$,
@@ -28,11 +22,8 @@ import {
 import { IoIosAddCircle, IoMdTrash, IoIosSettings } from 'react-icons/io'
 import { Button } from '@gtms/ui/Button'
 import { ErrorWrapper } from '@gtms/ui/ErrorWrapper'
-import { ImageEditor } from '@gtms/ui/ImageEditor'
-import { Picture } from '@gtms/ui/Picture'
 import { Spinner } from '@gtms/ui/Spinner'
 import { TagsBar } from '@gtms/ui/TagsBar'
-import { UserGroups } from '@gtms/ui/UserGroups'
 // styles
 import styles from './styles.scss'
 
@@ -43,9 +34,6 @@ type AccountPageProps = {
 export const AccountPage: NextPage<AccountPageProps> = () => {
   useInitState(markAsLoading)
   const { t } = useTranslation('account')
-  const [isAvatarEditorVisible, setIsAvatarEditorVisible] = useState<boolean>(
-    false
-  )
   const [state, setState] = useState<IAccountPageState>(accountPageState())
   const [tags, setTags] = useState<string[]>(state.tags || [])
   const [isSaving, setIsSaving] = useState<boolean>(false)
@@ -127,16 +115,10 @@ export const AccountPage: NextPage<AccountPageProps> = () => {
           </ErrorWrapper>
         )}
         {!state.isLoading && !state.errorOccured && (
-          <>
-            <Navigation current={Tabs.profile} />
+          <div className={styles.content}>
             <div>
-              <div className={styles.hint}>
-                That is how other people can see your profile
-                <span>
-                  You can edit your profile here, show and hide things
-                </span>
-              </div>
-              <div className={styles.userHeader}>
+              <LoggedUserAccountDetails />
+              {/* <div className={styles.userHeader}>
                 <ImageEditor
                   isVisible={isAvatarEditorVisible}
                   onSave={(file: File) => {
@@ -166,7 +148,8 @@ export const AccountPage: NextPage<AccountPageProps> = () => {
                   <span className={styles.aboutMeLabel}>About me:</span>
                   <UserDescription description={state.description} />
                 </div>
-              </div>
+              </div> */}
+              <Navigation current={Tabs.profile} />
               <ul className={styles.links}>
                 <li className={styles.item}>
                   <Button additionalStyles={styles.btn}>
@@ -194,7 +177,6 @@ export const AccountPage: NextPage<AccountPageProps> = () => {
                 </li>
               </ul>
               <div className={styles.userTags}>
-                <span># My TAGS:</span>
                 <TagsBar
                   tags={tags}
                   isSaving={isSaving}
@@ -225,16 +207,15 @@ export const AccountPage: NextPage<AccountPageProps> = () => {
                   Fav group(s)
                 </li>
               </ul>
-              <div className={styles.userGroups}>
-                <span>I am member of groups:</span>
-                <UserGroups
-                  groups={state.groups}
-                  noImage={GroupAvatarNoImage}
-                />
-              </div>
+            </div>
+            <div>
+              {/* <UserGroups
+                groups={state.groups}
+                noImage={GroupAvatarNoImage}
+              /> */}
               <MyPosts />
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
