@@ -75,6 +75,14 @@ export class UIQuery extends Query<IUI> {
     this.isNotificationsBarOpen(values)
   )
 
+  public isGroupsBarOpen = (values = this.getValue()) => {
+    return values.isGroupsBarOpen
+  }
+
+  public isGroupsBarOpen$: Observable<boolean> = this.select((values) =>
+    this.isGroupsBarOpen(values)
+  )
+
   public groupState = (groupId: string, value = this.getValue()): IGroupUI => {
     const { groups } = value
 
