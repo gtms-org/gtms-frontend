@@ -12,7 +12,7 @@ export const OffCanvas: FC<{
   isActive?: boolean
   onClose?: () => unknown
   toggleIsActive?: () => void
-}> = ({ additionalStyles, children, isActive, onClose, toggleIsActive }) => {
+}> = ({ additionalStyles, children, isActive, onClose }) => {
   useKey(
     () => {
       onClose ? onClose() : null
@@ -21,11 +21,6 @@ export const OffCanvas: FC<{
       detectKeys: [27],
     }
   )
-
-  // temporray
-  useKey(() => (toggleIsActive ? toggleIsActive() : null), {
-    detectKeys: ['g'],
-  })
 
   return (
     <div
@@ -36,10 +31,7 @@ export const OffCanvas: FC<{
     >
       {children}
       {isActive && (
-        <Overlay
-          isActive={isActive}
-          onClick={() => (toggleIsActive ? toggleIsActive : null)}
-        />
+        <Overlay isActive={isActive} />
       )}
     </div>
   )

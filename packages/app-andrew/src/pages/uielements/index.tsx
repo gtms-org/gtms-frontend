@@ -89,6 +89,7 @@ import { IoMdSend } from 'react-icons/io'
 import { IoMdStar } from 'react-icons/io'
 import { IoMdStarOutline } from 'react-icons/io'
 import { IoMdTrash } from 'react-icons/io'
+import { IoMdInformationCircleOutline } from 'react-icons/io'
 //md
 import { MdLockOutline } from 'react-icons/md'
 import { MdSecurity } from 'react-icons/md'
@@ -583,6 +584,12 @@ export const UiElements: NextPage<{}> = () => {
           36
           <i>
             <IoMdTrash />
+          </i>
+        </li>
+        <li>
+          37
+          <i>
+            <IoMdInformationCircleOutline />
           </i>
         </li>
       </ul>

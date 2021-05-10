@@ -54,18 +54,18 @@ export const PromotedTags: FC<{
     onNoRecordsClick && onNoRecordsClick()
   }, [onNoRecordsClick])
 
-  // useEffect(() => {
-  //   disableBodyScroll(document.body)
+  useEffect(() => {
+    disableBodyScroll(document.body)
 
-  //   return () => enableBodyScroll(document.body)
-  // }, [])
+    return () => enableBodyScroll(document.body)
+  }, [])
 
   return (
     <div
       className={cx(styles.promotedTags, additionalStyles)}
       data-testid="promoted-tags"
     >
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner additionalStyles={styles.spinner} />}
       {TagToDelete && (
         <Modal
           additionalStyles={styles.deleteTagModal}

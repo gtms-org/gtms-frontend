@@ -16,6 +16,7 @@ export const UserAvatar: FC<{
       [styles.xs]: size === 'xs',
       [styles.sm]: size === 'sm',
       [styles.md]: size === 'md',
+      [styles.xxl]: size === 'xxl',
       [styles.percent100]: size === '100percent',
     })}
     data-testid="user-avatar"

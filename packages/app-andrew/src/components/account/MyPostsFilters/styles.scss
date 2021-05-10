@@ -1,15 +1,55 @@
 @import '~@gtms/styles/scss/variables.scss';
+@import '~@gtms/styles/scss/mixins/focusElementEffects.scss';
+@import '~@gtms/styles/scss/mixins/fontSize.scss';
 
-.item {
+.spinner {
+  margin: 20px;
+}
+
+.items {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 10px;
 
-  &.active {
-    border: 1px solid #fff;
-    border-radius: 5%;
-  }
+  .item {
+    display: flex;
+    align-items: center;
+  
+    &.active,
+    &:hover {
+      cursor: pointer;
+      
+      .avatar {
+        @include effectColorTransparentOverlay('defaultRadius');
+      }
 
-  img {
-    margin-right: 10px;
+      .desc {
+        color: $theme4;
+      }
+    }
+  
+    .avatar {
+      margin-right: 10px;
+
+      img {
+        border-radius: $borderRadius;
+      }
+    }
+
+    .desc {
+      display: flex;
+      align-items: center;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .iconInfo {
+      @include fontSize(md);
+      line-height: 0;
+      margin-left: 10px;
+    }
   }
 }

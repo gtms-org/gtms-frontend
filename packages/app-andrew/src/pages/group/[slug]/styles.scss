@@ -2,11 +2,12 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/header.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
 .pageWrapper {
   @include pageWrapper();
-  max-width: $tempWidth;
+  background: $theme2;
 
   .spinner {
     margin: 40px auto;
@@ -14,6 +15,7 @@
 
   .groupHeader {
     position: relative;
+    padding: 10px;;
   }
 
   .promotedTags {
@@ -24,15 +26,28 @@
   .columns {
     position: relative;
     display: flex;
-    margin-top: 10px;
     min-height: 500px;
+    
+    @include for-phone-only {
+      flex-direction: column;
+      width: 100%;
+    }
 
     .sidebar {
-      padding: 20px;
+      padding: 10px;
       min-width: 200px;
       border-top-left-radius: $borderRadius;
       border-bottom-left-radius: $borderRadius;
-      background: $theme3;
+
+      @include for-desktop-only {
+        display: none;
+      }
+      
+      @include for-phone-only {
+        display: flex;
+        width: 100%;
+        border-radius: 0;
+      }
     }
 
     .content {
@@ -40,10 +55,13 @@
       gap: 20px;
       flex-direction: column;
       width: 100%;
-      padding: 20px;
+      padding: 0 10px;
       border-top-right-radius: $borderRadius;
       border-bottom-right-radius: $borderRadius;
-      background: $theme2;
+
+      @include for-phone-only {
+        border-radius: 0;
+      }
 
       .btnDeleteWrapper {
         margin-top: auto;

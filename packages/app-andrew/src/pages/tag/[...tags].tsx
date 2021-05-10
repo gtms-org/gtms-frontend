@@ -23,7 +23,6 @@ import { PostsList } from '@app/components/tag/PostsList'
 import { UsersList } from '@app/components/tag/UsersList'
 // ui
 import { FourHundredFour } from '@gtms/ui/FourHundredFour'
-import { MockData } from '@gtms/ui/MockData'
 import { Modal } from '@gtms/ui/Modal'
 import { TagsHeader } from '@gtms/ui/TagsHeader'
 // styles
@@ -137,6 +136,13 @@ const TagPage: NextPage<TagPageProps> = ({ groups, posts, tags, users }) => {
           suggestions={tagsHints.tags}
           tags={tags}
         />
+      
+        {(
+          (state.groups.docs.length === 0 ||
+          state.posts.docs.length === 0 ||
+          state.users.docs.length === 0) &&
+          <div className={styles.noRecords}>no records</div>
+        )}
 
         <h3 className={styles.header}>Groups</h3>
         <GroupsList
@@ -157,9 +163,6 @@ const TagPage: NextPage<TagPageProps> = ({ groups, posts, tags, users }) => {
             records={state.posts.docs}
             user={null}
           />
-        )}
-        {!state.posts && (
-          <MockData additionalStyles={styles.noRecords} numberOfElements={4} />
         )}
       </div>
     </div>

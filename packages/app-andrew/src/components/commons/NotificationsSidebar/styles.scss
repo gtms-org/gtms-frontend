@@ -12,7 +12,7 @@
   height: 100%;
   padding: 10px;
   background: $theme3;
-  transition: right 200ms ease-in;
+  transition: left $animationSpeedDefault;
 
   &.opened {
     left: 0;

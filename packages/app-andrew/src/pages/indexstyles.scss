@@ -11,7 +11,7 @@
   display: flex;
   width: 100%;
   background: $theme2;
-  transition: margin 500ms ease-in-out;
+  transition: margin $animationSpeedDefault;
 
   &.offCanvas {
     margin-left: -250px;
@@ -21,7 +21,7 @@
     z-index: -2;
     cursor: pointer;
     margin-left: -220px;
-    transition: margin 500ms ease-in-out;
+    transition: margin $animationSpeedDefault;
 
     &.active {
       margin-left: -470px;
@@ -80,6 +80,10 @@
       margin-bottom: 15px;
       background: $black;
       cursor: pointer;
+
+      @include for-phone-only {
+        display: none;
+      }
 
       &:hover {
         @include effectColorTransparentOverlay('defaultRadius', 4px);
@@ -174,7 +178,7 @@
         width: 100%;
         height: 40px;
         padding: 5px 12px;
-        border-radius: $borderRadius3;
+        border-radius: $borderRadius2;
         border: 2px solid $theme7;
         @include fontSize(md);
         background: $theme7;
@@ -224,8 +228,6 @@
     border-left: 1px solid $theme7;
     color: $theme0;
 
-    display: none;
-
     h3 {
       @include fontSize(xdefault);
       @include fontWeight(semiBold);
@@ -248,7 +250,7 @@
     right: -250px;
     display: flex;
     justify-content: center;
-    transition: right 500ms ease-in-out;
+    transition: right $animationSpeedDefault;
     width: 100%;
     max-width: 250px;
     height: 100%;

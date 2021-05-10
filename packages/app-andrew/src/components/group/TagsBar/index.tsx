@@ -15,10 +15,10 @@ import {
 } from '@gtms/state-tag'
 import { getGroupPosts } from '@gtms/state-post'
 // ui
-import { Scrollbars } from 'react-custom-scrollbars'
-import { IoMdGrid } from 'react-icons/io'
-import { Image } from '@gtms/ui/Image'
 import { Button } from '@gtms/ui/Button'
+import { Image } from '@gtms/ui/Image'
+import { IoMdClose, IoMdGrid } from 'react-icons/io'
+import { Scrollbars } from 'react-custom-scrollbars'
 import { Spinner } from '@gtms/ui/Spinner'
 // styles
 import styles from './styles.scss'
@@ -113,30 +113,33 @@ export const TagsBar: FC<{ additionalStyles?: string }> = ({
       )}
       {isActive && (
         <div className={styles.fixedWrapper}>
-          <Scrollbars style={{ width: '100%', height: '100%' }}>
-            <div className={styles.navWrapper}>
-              <ul className={styles.nav}>
+          <div className={styles.navWrapper}>
+            <ul className={styles.nav}>
+              <li
+                className={cx({
+                  [styles.active]: currentTab === Tabs.promoted,
+                })}
+                onClick={() => setCurrentTab(Tabs.promoted)}
+              >
+                <i>
+                  <IoMdGrid />
+                </i>
+                Tags
+              </li>
+              {state.isLogged && (
                 <li
+                  onClick={() => setCurrentTab(Tabs.favorites)}
                   className={cx({
-                    [styles.active]: currentTab === Tabs.promoted,
+                    [styles.active]: currentTab === Tabs.favorites,
                   })}
-                  onClick={() => setCurrentTab(Tabs.promoted)}
                 >
-                  <i>
-                    <IoMdGrid />
-                  </i>
-                  Tags
+                  Favorites
                 </li>
-                {state.isLogged && (
-                  <li
-                    onClick={() => setCurrentTab(Tabs.favorites)}
-                    className={cx({
-                      [styles.active]: currentTab === Tabs.favorites,
-                    })}
-                  >
-                    Favorites
-                  </li>
-                )}
+              )}
+              {
+                !state.recentlyViewed.isLoading &&
+                !state.recentlyViewed.errorOccured &&
+                state.recentlyViewed.tags.length > 0 && 
                 <li
                   className={cx({
                     [styles.active]: currentTab === Tabs.recentlyViewed,
@@ -145,17 +148,18 @@ export const TagsBar: FC<{ additionalStyles?: string }> = ({
                 >
                   last viewed
                 </li>
-                {/* <li>x close</li> */}
-              </ul>
-              <Button
-                additionalStyles={styles.btnClose}
-                onClick={() => setIsActive(false)}
-              >
-                <i>
-                  <IoMdGrid />
-                </i>
-              </Button>
-            </div>
+              }
+            </ul>
+            <Button
+              additionalStyles={styles.btnClose}
+              onClick={() => setIsActive(false)}
+            >
+              <i>
+                <IoMdClose />
+              </i>
+            </Button>
+          </div>          
+          <Scrollbars style={{ width: '100%', height: '100%' }}>
             {currentTab === Tabs.promoted &&
               !state.promoted.isLoading &&
               !state.promoted.errorOccured &&
@@ -166,7 +170,9 @@ export const TagsBar: FC<{ additionalStyles?: string }> = ({
                       tag: [tag.tag],
                     })
                     return (
-                      <li className={styles.item} key={`promotedTag-${tag.id}`}>
+                      <li 
+                        className={styles.item} 
+                        key={`promotedTag-${tag.id}`}>
                         <Link href={url}>
                           <a
                             onClick={(e) => {
@@ -221,7 +227,7 @@ export const TagsBar: FC<{ additionalStyles?: string }> = ({
                           <h4>#{tag.tag}</h4>
                           <span>
                             visited{' '}
-                            {formatDistance(
+                            {tag.createdAt && formatDistance(
                               new Date(tag.createdAt),
                               new Date()
                             )}

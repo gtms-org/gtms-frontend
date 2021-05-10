@@ -13,6 +13,14 @@
   }
 }
 
+.myPostsFilters {
+  margin: 10px auto ;
+}
+
 .post {
-  margin-top: 10px;
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

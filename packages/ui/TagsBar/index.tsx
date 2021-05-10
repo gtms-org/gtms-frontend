@@ -102,9 +102,7 @@ export const TagsBar: FC<{
               {t('save')}
             </button>
             {isSaving && (
-              <div className={styles.spinner}>
-                <Spinner />
-              </div>
+              <Spinner additionalStyles={styles.spinner} />
             )}
             {showSuggestions && !isLoading && (
               <div className={styles.suggestions}>
@@ -128,23 +126,20 @@ export const TagsBar: FC<{
 
             {isLoading && value !== '' && (
               <div className={styles.suggestions}>
-                <div className={styles.spinner}>
-                  <Spinner />
-                </div>
+                <Spinner additionalStyles={styles.spinner} />
               </div>
             )}
           </div>
           <div className={styles.tagsList}>
             {tags.map((tag) => (
-              <button
-                className={styles.tag}
+              <Button
+                additionalStyles={styles.tag}
                 key={`tag-${tag}`}
                 type="button"
-                title="click to remove"
                 onClick={() => onTagRemove(tag)}
               >
                 #{tag}
-              </button>
+              </Button>
             ))}
           </div>
         </>
@@ -160,9 +155,9 @@ export const TagsBar: FC<{
       {!isInEditMode && tags.length > 0 && (
         <div className={styles.tagsList}>
           {tags.map((tag) => (
-            <button className={styles.tag} key={`tag-${tag}`} type="button">
+            <Button additionalStyles={styles.tag} key={`tag-${tag}`}>
               #{tag}
-            </button>
+            </Button>
           ))}
           <a
             className={styles.actionButton}

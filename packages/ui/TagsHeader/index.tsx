@@ -1,25 +1,27 @@
 import React, { FC, useState, useEffect } from 'react'
+import { useDebounce } from '@gtms/commons/hooks/useDebounce'
+// ui
+import { Button } from '../Button'
 import { Spinner } from '../Spinner'
 import styles from './styles.scss'
-import { useDebounce } from '@gtms/commons/hooks/useDebounce'
 
 export const TagsHeader: FC<{
-  tags: string[]
-  suggestions?: string[]
-  isLoading: boolean
   hintMinLenght?: number
+  isLoading: boolean
   onLoadSuggestion: (text: string) => void
   onLoadSuggestionCancel: () => void
   onTagAdd: (tag: string) => void
   onTagRemove: (tag: string) => void
+  suggestions?: string[]
+  tags: string[]
 }> = ({
-  tags,
+  hintMinLenght = 3,
   isLoading,
   onLoadSuggestion,
   onLoadSuggestionCancel,
   onTagAdd,
   suggestions = [],
-  hintMinLenght = 3,
+  tags,
 }) => {
   const [isInEditMode, setIsInEditMode] = useState<boolean>(false)
   const [query, setQuery] = useState<string>('')
@@ -30,39 +32,36 @@ export const TagsHeader: FC<{
       onLoadSuggestion(debouncedQuery)
     }
   }, [debouncedQuery])
-
   return (
-    <div data-testid="tags-header" className={styles.wrapper}>
-      <header>
-        <h2 className={styles.header}>
-          {tags.map((tag) => `#${tag}`).join(', ')}
-        </h2>
-        {!isInEditMode && <a onClick={() => setIsInEditMode(true)}>+</a>}
+    <div className={styles.wrapper} data-testid="tags-header">
+      <>
+        <h2 className={styles.tags}></h2>
+        <ul>
+          {tags.map(tag => <li key={`tag-${tag}`}>{tag}</li>)}
+        </ul>
+        {!isInEditMode && <Button additionalStyles={styles.button} onClick={() => setIsInEditMode(true)}>+</Button>}
         {isInEditMode && (
-          <div className={styles.inputWrapper}>
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value.trim().replace('#', ''))}
-              onKeyDown={(e) => {
-                if ([32, 13].includes(e.keyCode)) {
-                  const tag = query.trim()
+          <input
+            className={styles.inputWrapper}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value.trim().replace('#', ''))}
+            onKeyDown={(e) => {
+              if ([32, 13].includes(e.keyCode)) {
+                const tag = query.trim()
 
-                  onTagAdd(tag)
-                  setQuery('')
-                  onLoadSuggestionCancel()
-                }
-              }}
-            />
-          </div>
+                onTagAdd(tag)
+                setQuery('')
+                onLoadSuggestionCancel()
+              }
+            }}
+          />
         )}
-      </header>
-      <section>
+      </>
+      <>
         {isLoading && query !== '' && (
           <div className={styles.suggestions}>
-            <div className={styles.spinner}>
-              <Spinner />
-            </div>
+            <Spinner additionalStyles={styles.spinner} />
           </div>
         )}
         {!isLoading && suggestions.length > 0 && (
@@ -83,7 +82,7 @@ export const TagsHeader: FC<{
             </ul>
           </div>
         )}
-      </section>
+      </>
     </div>
   )
 }

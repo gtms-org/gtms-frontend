@@ -1,13 +1,17 @@
 @import '~@gtms/styles/scss/variables.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 
 .groupHeaderComponent {
   position: relative;
   display: flex;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
-  transition: top 200ms linear;
-  margin-top: 10px;
+  transition: top $animationSpeedSlow;
+
+  @include for-phone-only {
+    margin-top: 0;
+  }
 
   .search {
     // @todo remove it when search will be finished

@@ -3,6 +3,7 @@ import { userQuery } from '@gtms/state-user'
 import { Navigation } from '@app/components/commons/Navigation'
 import { NavigationDots } from '@app/components/commons/NavigationDots'
 // ui
+import { useWindowSize } from '@gtms/commons/hooks/useWindowSize'
 import { SearchBar } from '@gtms/ui/SearchBar'
 import { AiFillRead } from 'react-icons/ai'
 import { AiOutlineBell } from 'react-icons/ai'
@@ -14,6 +15,7 @@ import styles from './styles.scss'
 
 export const MobileNavigationWrapper: FC<{}> = () => {
   const [isLogged, setIsLogged] = useState<boolean>(userQuery.isLogged)
+  const windowSize = useWindowSize()
 
   useEffect(() => {
     const sub = userQuery.isLogged$.subscribe((value) => setIsLogged(value))
@@ -23,7 +25,7 @@ export const MobileNavigationWrapper: FC<{}> = () => {
     }
   })
 
-  return (
+  return windowSize && windowSize !== 'undefined' && windowSize.width > 599 ? null : (
     <div
       className={styles.mobileMainNavigationWrapper}
       data-testid="mobile-navigation-wrapper"

@@ -12,6 +12,10 @@
   position: relative;
   z-index: 2;
 
+  .spinner {
+    margin: 0 auto;
+  }
+
   .items {
     @include gridDefault(2);
 

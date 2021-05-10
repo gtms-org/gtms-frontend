@@ -3,6 +3,7 @@
 
 .pageWrapper {
   @include pageWrapper();
+  padding: 10px;
   background: $theme2;
 
   .wrapper {

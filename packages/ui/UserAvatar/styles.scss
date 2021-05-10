@@ -32,6 +32,14 @@
     min-width: 55px;
   }
 
+  &.xxl {
+    height: 150px;
+    width: 150px;
+    // for display flex
+    min-height: 55px;
+    min-width: 55px;
+  }
+
   &.percent100 {
     height: 100%;
     width: 100%;

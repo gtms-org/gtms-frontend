@@ -1,15 +1,14 @@
 import React, { FC, useState, useEffect } from 'react'
 import {
   userQuery,
-  updateAccountAvatar,
-  updateAccountDetails,
+  updateAccountAvatar
 } from '@gtms/state-user'
 import { IAccountDetails } from '@gtms/commons/models'
 import { FileStatus } from '@gtms/commons/enums'
 import { UserEmail } from '@app/components/account/UserEmail'
 import { UserName } from '@app/components/account/UserName'
 import { UserDescription } from '@app/components/account/UserDescription'
-import { Picture } from '@gtms/ui/Picture'
+import { UserAvatar } from '@gtms/ui/UserAvatar'
 import { Spinner } from '@gtms/ui/Spinner'
 import { UserAvatarNoImage } from '@app/enums'
 import { ImageEditor } from '@gtms/ui/ImageEditor'
@@ -45,22 +44,20 @@ export const LoggedUserAccountDetails: FC = () => {
           }}
           onClose={() => setIsAvatarEditorVisible(false)}
         />
-        <div className={styles.avatarWrapper}>
-          <a onClick={() => setIsAvatarEditorVisible(true)}>
-            {[FileStatus.uploaded, FileStatus.processing].includes(
-              state.avatar.status
-            ) && <Spinner />}
-            <Picture
-              {...(userQuery.hasAvatar('200x200')
-                ? userQuery.getAvatar('200x200')
-                : UserAvatarNoImage['200x200'])}
-            />
-          </a>
-        </div>
+        {[FileStatus.uploaded, FileStatus.processing].includes(state?.avatar?.status) && <Spinner additionalStyles={styles.spinner} />}
+        <UserAvatar
+          additionalStyles={styles.avatar}
+          onClick={() => setIsAvatarEditorVisible(true)}
+          size='xxl'
+          image={(userQuery.hasAvatar('200x200')
+            ? userQuery.getAvatar('200x200')
+            : UserAvatarNoImage['200x200'])
+          }
+        />
         <div className={styles.userNameSurnameLogin}>
           <UserName name={state.name} surname={state.surname} />
           <UserEmail email={state.email} />
-          <span className={styles.login}>@{state.username}</span>
+          {state.username && <span className={styles.login}>@{state.username}</span>}
         </div>
         <div className={styles.desc}>
           <span className={styles.aboutMeLabel}>About me:</span>

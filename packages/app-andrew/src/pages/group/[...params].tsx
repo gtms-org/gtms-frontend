@@ -286,24 +286,23 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
             isEditAllowed={groupQuery.hasAdminRights()}
           />
           <div className={styles.templogo} />
-          <TagsBar additionalStyles={styles.tagsBar} />
+          <TagsBar additionalStyles={styles.tagsFavsBar} />
           <div className={styles.content}>
             <GroupHeader />
-            <br /> {/* for aligning horizontally logo tags and content */}
-            {/* <Headroom upTolerance={5} className={styles.headroom}>
+            <Headroom upTolerance={5} className={styles.headroom}>
               <GroupHeader
                 additionalStyles={cx({
                   [styles.widthMax]: !state.showPromoted && state.activePost,
                 })}
               />
-            </Headroom> */}
+            </Headroom>
             {state.showPromoted && (
               <>
                 <PromotedTags
                   additionalStyles={styles.promotedTags}
                   onTagClick={(tag) => onClick({ tag: tag.tag })}
                 />
-                {/* <Overlay /> */}
+                <Overlay />
               </>
             )}
             {state.showUsers && (
@@ -313,7 +312,7 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
                   slug={state.group.slug}
                   {...state.members}
                 />
-                {/* <Overlay /> */}
+                <Overlay />
               </>
             )}
             {!showWelcomeText && (

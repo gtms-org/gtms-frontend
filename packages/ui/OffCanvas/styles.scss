@@ -5,9 +5,17 @@
   left: 0;
   display: flex;
   width: 100%;
-  transition: left 500ms;
+  transition: left $animationSpeedDefault;
 
   &.isActive {
-    left: 520px;
+    left: 500px;
+    
+    [class*='mainNavigationWrapper'] {
+      left: 500px;
+    }
+  }
+
+  [class*='mainNavigationWrapper'] {
+    transition: left $animationSpeedDefault;
   }
 }

@@ -19,7 +19,6 @@
     @include buttonShapeDefault();
     @include buttonWithIcon('left');
     @include buttonColorsDefault();
-    margin-top: 10px;
     padding: 11px; // @todo fix it soon, make some button mixin size or something
 
     &:hover {
@@ -30,7 +29,6 @@
   .fixedWrapper {
     position: fixed;
     z-index: 10;
-    width: 240px;
     height: 100%;
   }
 
@@ -55,26 +53,25 @@
   .navWrapper {
     display: flex;
     align-items: center;
+    border-radius: $borderRadius;
 
     .nav {
       display: flex;
       align-items: center;
       gap: 5px;
-      margin-bottom: 8px;
+      margin-left: 5px;
       @include fontWeight(semiBold);
-      padding: 6px;
-      margin-top: 10px;
       border-radius: $borderRadius;
-      background: $theme3;
       cursor: pointer;
-
+      
       li {
         display: flex;
         align-items: center;
-        padding: 5px;
-        border-radius: $borderRadius;
+        padding: 0 2px;
         text-transform: uppercase;
         @include fontSize(xs);
+        padding: 5px;
+        border-radius: $borderRadius;
         background: $theme3;
         color: $theme0;
         cursor: pointer;
@@ -96,7 +93,7 @@
       @include buttonDefault();
       @include buttonSizeMd();
       @include buttonShapeDefault();
-      @include buttonWithIcon('left');
+      @include buttonWithIcon();
       @include buttonColorsDefault();
       margin-left: auto;
 
@@ -113,10 +110,9 @@
       a {
         display: flex;
         align-items: center;
-        padding: 5px;
-        margin-top: 5px;
+        border: 5px solid #131319;
+        border-top: 0;
         border-radius: $borderRadius;
-        background: $theme3;
         cursor: pointer;
 
         img {

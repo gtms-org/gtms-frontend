@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import cx from 'classnames'
 // ui
+import { Link } from '@gtms/commons/i18n'
 import { IoMdArrowBack } from 'react-icons/io'
 import { Button } from '@gtms/ui/Button'
 import { Overlay } from '@gtms/ui/Overlay'
@@ -29,10 +30,14 @@ export const InternalError: FC<{
             : 'An error occurred on client'}
         </h2>
         <Button additionalStyles={styles.btn}>
-          <i>
-            <IoMdArrowBack />
-          </i>
-          Button
+          <Link href="/">
+            <a>
+              <i>
+                <IoMdArrowBack />
+              </i>
+              Button
+            </a>
+          </Link>
         </Button>
       </div>
       <Overlay />

@@ -106,28 +106,28 @@ export const PromotedTags: FC<{
         state.tags.length > 0 &&
         (type === 'list' ? (
           <PromotedTagsUIList
-            onFavClick={onFavClick}
-            favs={state.favTags}
             activeTags={state.activeTags}
+            favs={state.favTags}
             isAdmin={state.isAdmin}
             isLoading={state.isLoading}
             noImage={PromotedTagNoImage}
             onDeleteRecordClick={onDeleteTagClick}
             onEditRecordClick={onEditTagClick}
+            onFavClick={onFavClick}
             onNoRecordsClick={onAddTagClick}
             onTagClick={onTagClick}
             tags={state.tags}
           />
         ) : (
           <PromotedTagsUIGrid
-            onFavClick={onFavClick}
-            favs={state.favTags}
             activeTags={state.activeTags}
+            favs={state.favTags}
             isAdmin={state.isAdmin}
             isLoading={state.isLoading}
             noImage={PromotedTagNoImage}
             onDeleteRecordClick={onDeleteTagClick}
             onEditRecordClick={onEditTagClick}
+            onFavClick={onFavClick}
             onNoRecordsClick={onAddTagClick}
             onTagClick={onTagClick}
             tags={state.tags}

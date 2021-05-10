@@ -13,7 +13,6 @@ import { SettingsButton } from '@app/components/group/SettingsButton'
 // ui
 import { FaBars } from 'react-icons/fa'
 import { Button } from '@gtms/ui/Button'
-import { Overlay } from '@gtms/ui/Overlay'
 // styles
 import styles from './styles.scss'
 

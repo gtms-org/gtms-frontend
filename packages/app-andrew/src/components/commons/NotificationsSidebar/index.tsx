@@ -46,13 +46,14 @@ export const NotificationsSidebar: FC<{
 
   useKey(
     () => {
+      // @todo why it;s not working
       closeSidebarNotifications()
     },
     {
       detectKeys: [27],
     }
   )
-
+  
   return (
     <div
       data-testid={'notifications-sidebar'}

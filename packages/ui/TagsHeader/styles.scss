@@ -1,36 +1,32 @@
 @import '~@gtms/styles/scss/variables.scss';
+@import '~@gtms/styles/scss/mixins/buttons.scss';
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 
 .wrapper {
-  color: $theme3;
+  .tags {
+    @include fontSize(xxlg);
+  }
 
-  header {
-    display: flex;
-    align-items: baseline;
+  .btn {
+    @include buttonDefault();
+    @include buttonSizeDefault();
+    @include buttonShapeDefault();
+    @include buttonColorsSecondary();
+    @include buttonWithIcon('left');
 
-    .header {
-      @include fontSize(xxlg);
+    &:hover {
+      @include buttonColorsPrimary();
     }
+  }
 
-    a {
-      @include fontSize(xxlg);
-      @include fontWeight(semiBold);
-      margin-left: 10px;
-      cursor: pointer;
-    }
-
-    .inputWrapper {
-      margin-left: 10px;
-
-      input {
-        background: black;
-        min-width: 300px;
-        border: none;
-        padding: 5px;
-        color: $theme3;
-        border-bottom: 1px solid $theme3;
-      }
-    }
+  .inputWrapper {
+    margin-left: 10px;
+    background: black;
+    min-width: 300px;
+    padding: 5px;
+    border-bottom: 1px solid $theme3;
+    border: 1px solid $theme0;
+    border-radius: $borderRadius2;
   }
 }

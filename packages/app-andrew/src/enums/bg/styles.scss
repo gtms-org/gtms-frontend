@@ -5,7 +5,7 @@
   &[data-loaded='true'] {
     filter: none;
     will-change: transform, opacity;
-    // animation: reveal 1s ease-out;
+    // animation: reveal 1s;
     background-image: url($img);
   }
 }

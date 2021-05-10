@@ -1,5 +1,6 @@
 @import '~@gtms/styles/scss/variables.scss';
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/zindex.scss';
 
 .wrapper {
@@ -11,10 +12,13 @@
   @include z-index(modal);
 
   // size
-  min-width: 300px;
-  min-height: 120px;
   max-width: 800px;
   padding: 10px;
+  
+  @include for-desktop-only {
+    min-width: 300px;
+    min-height: 120px;
+  }
 
   // style details
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.05);

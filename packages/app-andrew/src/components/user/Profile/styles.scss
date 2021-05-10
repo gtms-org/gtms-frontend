@@ -4,58 +4,56 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 
-.wrapper {
-  .header {
-    display: flex;
-    align-items: center;
+.header {
+  display: flex;
+  align-items: center;
 
-    .image {
-      max-width: 50px;
+  .image {
+    max-width: 50px;
 
-      img {
-        border-radius: 50%;
-      }
-
-      &:hover {
-        @include effectColorTransparentOverlay('circle');
-      }
+    img {
+      border-radius: 50%;
     }
 
-    .headerAndDesc {
-      margin-left: 10px;
-
-      .header {
-        @include fontSize(lg);
-        @include fontWeight(semiBold);
-      }
-
-      .desc {
-        @include fontSize(xdefault);
-        word-break: break-all;
-      }
+    &:hover {
+      @include effectColorTransparentOverlay('circle');
     }
   }
 
-  .tags {
-    margin: 20px 0;
+  .headerAndDesc {
+    margin-left: 10px;
 
     .header {
       @include fontSize(lg);
       @include fontWeight(semiBold);
-      margin-bottom: 5px;
+    }
+
+    .desc {
+      @include fontSize(xdefault);
+      word-break: break-all;
     }
   }
+}
 
-  .inviteToGroupButton {
-    @include buttonDefault();
-    @include buttonSizeDefault();
-    @include buttonShapeDefault();
-    @include buttonColorsSecondary();
-    @include buttonWithIcon('left');
-    margin-bottom: 10px;
+.tags {
+  margin: 20px 0;
 
-    &:hover {
-      @include buttonColorsPrimary();
-    }
+  .header {
+    @include fontSize(lg);
+    @include fontWeight(semiBold);
+    margin-bottom: 5px;
+  }
+}
+
+.inviteToGroupButton {
+  @include buttonDefault();
+  @include buttonSizeDefault();
+  @include buttonShapeDefault();
+  @include buttonColorsSecondary();
+  @include buttonWithIcon('left');
+  margin-bottom: 10px;
+
+  &:hover {
+    @include buttonColorsPrimary();
   }
 }

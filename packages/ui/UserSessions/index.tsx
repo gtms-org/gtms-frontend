@@ -16,7 +16,6 @@ export const UserSessions: FC<{
 }> = ({ isLoading, errorOccured, sessions, onDeleteClick }) => {
   return (
     <div className={styles.wrapper} data-testid="user-sessions">
-      <h2 className={styles.header}>User sessions</h2>
       {isLoading && <Spinner />}
       {!isLoading && errorOccured && (
         <ErrorWrapper>

@@ -84,8 +84,7 @@ export const PostSingle: FC<{
   tags,
   user,
 }) => {
-  // const [isAnswerFormOpen] = useState<boolean>(false)
-  const [isAnswerFormOpen, setIsAnswerFormOpen] = useState<boolean>(false)
+  const [isAnswerFormOpen] = useState<boolean>(false)
   const [lightboxState, setLightboxState] = useState<{
     isOpen: boolean
     current: number

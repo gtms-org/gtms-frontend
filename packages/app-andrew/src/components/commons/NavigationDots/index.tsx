@@ -5,6 +5,7 @@ import { loadMyGroups, updateFavGroupsOrder } from '@gtms/state-user'
 import { GroupAvatarNoImage } from '@app/enums'
 import { IGroup } from '@gtms/commons/models'
 import { openGroupsBar, closeGroupsBar } from '@app/state/ui/ui.service'
+import { NotificationsSidebar } from '@app/components/commons/NotificationsSidebar'
 // ui
 import { NavigationDots as NavigationDotsUI } from '@gtms/ui/NavigationDots'
 
@@ -49,6 +50,7 @@ export const NavigationDots: FC = () => {
       onOpen={openGroupsBar}
       onClose={closeGroupsBar}
     >
+      <NotificationsSidebar />
       <NavigationDotsFullView />
     </NavigationDotsUI>
   )

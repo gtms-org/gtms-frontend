@@ -14,9 +14,8 @@
       display: block;
       color: $theme4;
       position: relative;
-      vertical-align: middle;
       white-space: nowrap;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
 
       .textLabelUnchecked {
         display: block;
@@ -40,7 +39,7 @@
         width: 42px;
         height: 24px;
         background: $theme4;
-        transition: all 0.3s ease;
+        transition: all $animationSpeedSlow;
       }
 
       &:after {
@@ -50,7 +49,7 @@
         top: 3px;
         left: 3px;
         box-shadow: 0 1px 3px rgba(#121621, 0.1);
-        transition: all 0.45s ease;
+        transition: all $animationSpeedDefault;
       }
 
       .locker {
@@ -63,7 +62,7 @@
         border-radius: 2px;
         display: block;
         z-index: 1;
-        transition: all 0.45s ease;
+        transition: all $animationSpeedDefault;
 
         &:before {
           content: '';
@@ -89,7 +88,7 @@
           bottom: 6px;
           position: absolute;
           transform-origin: 0 100%;
-          transition: all 0.45s ease;
+          transition: all $animationSpeedDefault;
           transform: rotate(-35deg) translate(0, 1px);
         }
       }

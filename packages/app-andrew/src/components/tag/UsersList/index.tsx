@@ -14,15 +14,23 @@ export const UsersList: FC<{ records: IUser[]; isLoading: boolean }> = ({
   return (
     <div className={styles.wrapper} data-testid="users-list">
       {isLoading && <Spinner />}
-      {!isLoading &&
-        records.length > 0 &&
-        records.map((user) => (
-          // proper UI needs to be done here
-          <div key={`user-${user.id}`}>{getDisplayName(user)}</div>
-        ))}
       {!isLoading && records.length === 0 && (
         <MockData additionalStyles={styles.noRecords} numberOfElements={4} />
-      )}
+      )}      
+      <ul>
+        {!isLoading &&
+          records.length > 0 &&
+          records.map((user) => (
+            <li key={`user-${user.id}`}>
+              {getDisplayName(user)}
+              {user.email}
+              {user.username}
+              {user.name}
+              {user.surname}
+              {user.postsCounter}
+            </li>
+          ))}
+      </ul>
     </div>
   )
 }

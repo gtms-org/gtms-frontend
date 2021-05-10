@@ -436,10 +436,16 @@ export const SearchPage: FC<{
   }, [tagsSuggestionsAbortController])
 
   return (
-    <div className={styles.pageWrapper} data-testid="search-page">
-      <div className={styles.wrapper}>
-        <span>{t('searchHeader2')}</span>
+    <div 
+      data-testid="search-page"
+      className={cx(styles.pageWrapper, {
+        [styles.isOverlay]: state.suggestions.isLoading || state.suggestions.records.length >= 1,
+      })}
+    >
+      <div className={styles.content}>
+        <h2 className={styles.header}>{t('searchHeader2')}</h2>
         <SearchBar
+          additionalStyles={styles.searchWrapper}
           isLoading={state.suggestions.isLoading}
           onLoadSuggestion={onFindTags}
           onLoadSuggestionCancel={onLoadSuggestionCancel}

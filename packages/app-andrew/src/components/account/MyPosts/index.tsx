@@ -40,7 +40,6 @@ export const MyPosts: FC = () => {
     offset: 0,
   })
   const [state, setState] = useState<IMyPostsState>(myPostsState())
-  const [showFilters, setShowFilters] = useState<boolean>(false)
   const [search, setSearch] = useState<{
     groups: { id: string; name: string }[]
     tags: string[]
@@ -278,6 +277,7 @@ export const MyPosts: FC = () => {
         <>
           <MyPostsFilters
             active={groupNames}
+            additionalStyles={styles.myPostsFilters}
             onGroupClick={onFilterGroupClick}
           />
           <PostsList
@@ -305,7 +305,7 @@ export const MyPosts: FC = () => {
       )}
 
       {!data.isLoading && data.docs.length === 0 && !data.errorOccured && (
-        <p>No records :( Add your first post!</p>
+        <p>No records {`:(`} Add your first post!</p>
       )}
 
       {!data.isLoading && data.errorOccured && (

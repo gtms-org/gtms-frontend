@@ -44,7 +44,7 @@ export const AccountSecurityPage: NextPage<IAccountSecurityPageProps> = () => {
   })
 
   const onDeleteSessionClick = useCallback((id: string) => {
-    // todo display a confirmation here
+    // @todo display a confirmation here
     deleteActiveSessionAPI(id)
       .then(() => {
         setUserSession((data) => {
@@ -100,12 +100,16 @@ export const AccountSecurityPage: NextPage<IAccountSecurityPageProps> = () => {
   return (
     <div className={styles.pageWrapper} data-testid="account-security-page">
       <div className={styles.wrapper}>
-        <LoggedUserAccountDetails />
-        <Navigation current={Tabs.security} />
-        <ChangePassword additionalStyles={styles.changePassword} />
-        <UserSessions {...userSession} onDeleteClick={onDeleteSessionClick} />
-        <LoginHistory {...loginHistory} />
-        <DeleteAccount onConfirm={() => null} />
+        <div>
+          <LoggedUserAccountDetails />
+          <Navigation current={Tabs.security} />
+        </div>
+        <div>
+          <ChangePassword additionalStyles={styles.changePassword} />
+          <UserSessions {...userSession} onDeleteClick={onDeleteSessionClick} />
+          <LoginHistory {...loginHistory} />
+          <DeleteAccount onConfirm={() => null} />
+        </div>
       </div>
     </div>
   )

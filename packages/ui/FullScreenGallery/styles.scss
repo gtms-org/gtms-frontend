@@ -14,7 +14,7 @@
   padding-left: 45px; // because of NavigationWrapper component on the left side
   @include z-index(fullScreenGallery);
   box-shadow: 0px 5px 97px -20px rgba(0, 0, 0, 0.75);
-  transition: left 0.3s ease-in-out;
+  transition: left $animationSpeedSlow;
 
   &.active {
     left: 0;
@@ -67,7 +67,7 @@
     height: 100%;
     padding: 15px;
     background: $theme1;
-    transition: top 0.3s ease-in-out;
+    transition: top $animationSpeedSlow;
     cursor: pointer;
     box-shadow: 0px -10px 66px -19px rgba(0, 0, 0, 0.45);
 

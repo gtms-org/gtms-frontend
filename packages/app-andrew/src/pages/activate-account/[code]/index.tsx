@@ -47,9 +47,9 @@ export const ActivateAccountPage: NextPage<{}> = () => {
 }
 
 ActivateAccountPage.getInitialProps = async (ctx: NextPageContext) => {
-  // if (hasAuthSessionCookies(ctx)) {
-  //   redirect('/', ctx)
-  // }
+  if (hasAuthSessionCookies(ctx)) {
+    redirect('/', ctx)
+  }
 
   return { namespacesRequired: ['accountActivation'] }
 }

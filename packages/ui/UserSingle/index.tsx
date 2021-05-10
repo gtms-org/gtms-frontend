@@ -42,6 +42,7 @@ export const UserSingle: FC<
           />
         </Link>
         <div>
+          {/* @todo name here is it needed? */}
           <h2>{getDisplayName({ name, username, surname })}</h2>
           {description && <p>{description}</p>}
           <div className={styles.tags}>

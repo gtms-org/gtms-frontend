@@ -5,7 +5,6 @@ import Head from 'next/head'
 import { appWithTranslation } from '@gtms/commons/i18n'
 import { MobileNavigationWrapper } from '@app/components/commons/MobileNavigationWrapper'
 import { NavigationWrapper } from '@app/components/commons/NavigationWrapper'
-import { NotificationsSidebar } from '@app/components/commons/NotificationsSidebar'
 import { NotificationsActive } from '@app/components/commons/NotificationsActive'
 import { GroupPreview } from '@app/components/commons/GroupPreview'
 import { PostDetailsModal } from '@app/components/post/PostDetailsModal'
@@ -124,7 +123,7 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
   render() {
     const { Component, pageProps } = this.props
     // const { background, backgroundImage, backgroundLoaded } = this.state
-
+    
     return (
       <div className={styles.appWrapper}>
         <Head>
@@ -132,7 +131,6 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
         </Head>
         <LoginWindow />
         <NotificationsActive />
-        <NotificationsSidebar />
         <OffCanvas
           isActive={this.state.isOffCanvasActive}
           toggleIsActive={() => this.toggleIsActive()}

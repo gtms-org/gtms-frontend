@@ -6,8 +6,8 @@
   "main": "src/index.ts",
   "license": "ISC",
   "dependencies": {
-    "@gtms/api-common": "0.10.1",
-    "@gtms/commons": "0.35.1"
+    "@gtms/api-common": "*",
+    "@gtms/commons": "*"
   },
   "scripts": {
     "build": "exit 0",

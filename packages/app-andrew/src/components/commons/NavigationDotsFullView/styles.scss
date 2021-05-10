@@ -35,7 +35,7 @@
         a {
           display: flex;
           align-items: center;
-          color: rgba($theme0, 0.85);
+          cursor: pointer;
 
           &:hover {
             color: $theme0;
@@ -55,7 +55,9 @@
 
         &.active {
           a {
-            @include fontWeight(bold);
+            padding: 5px;
+            border-radius: $borderRadius;
+            background: $theme4;
             color: $theme0;
           }
         }

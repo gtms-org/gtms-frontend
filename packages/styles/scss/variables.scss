@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
+$animationSpeedDefault: 500ms;
+$animationSpeedSlow: 200ms;
+
 $black: #000;
 
 $theme0: #ffffff;
@@ -9,13 +12,11 @@ $theme3: rgba(0, 0, 0, 1);
 $theme4: #1f5ef3;
 $theme6: #c50a1e;
 $theme7: #3f4458;
-$theme8: #21212b;
 
 $componentInviteFriends: #bdd3eb;
 
 $borderRadius: 5px;
 $borderRadius2: 10px;
-$borderRadius3: 35px;
 
 $size1: 35px;
 

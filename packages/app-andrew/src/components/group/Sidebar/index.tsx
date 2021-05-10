@@ -16,7 +16,7 @@ import { toggleGroupUsers, togglePromotedTagsInGroup } from '@app/state'
 // components
 import { GroupAvatar } from '@app/components/group/GroupAvatar'
 import { GroupSidebarContent } from './GroupSidebarContent'
-// import { GroupDescription } from 'components/group/GroupDescription'
+import { GroupDescription } from '@app/components/group/GroupDescription'
 // ui
 import { FaUsers } from 'react-icons/fa'
 import { BsFillGridFill } from 'react-icons/bs'
@@ -91,7 +91,7 @@ export const GroupSidebar: FC<{}> = () => {
           {state.group?.name}
         </h2>
       </div>
-      {/* <GroupDescription
+      <GroupDescription
         additionalStyles={styles.desc}
         isEditAllowed={groupQuery.hasAdminRights()}
         slug={state.group?.slug || ''}
@@ -102,7 +102,7 @@ export const GroupSidebar: FC<{}> = () => {
               : ''
             : state.group?.description || ''
         }
-      /> */}
+      />
       <Button
         onClick={() => {
           state.group?.id && togglePromotedTagsInGroup(state.group.id)

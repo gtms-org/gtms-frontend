@@ -1,4 +1,4 @@
-import React, { FC, useState, useLayoutEffect } from 'react'
+import React, { FC, useState } from 'react'
 import cx from 'classnames'
 import { Link } from '@gtms/commons/i18n'
 import { IGroup } from '@gtms/commons/models'
@@ -12,31 +12,21 @@ import styles from './styles.scss'
 
 export const NavigationDots: FC<{
   groups: IGroup[]
-  noImage: { [key: string]: IImage }
-  onOrderChange?: (groups: IGroup[]) => unknown
   isOpen: boolean
-  onOpen: () => void
+  noImage: { [key: string]: IImage }
   onClose: () => void
+  onOpen: () => void
+  onOrderChange?: (groups: IGroup[]) => unknown
 }> = ({
-  groups,
-  noImage,
   children,
-  onOrderChange,
+  groups,
   isOpen,
+  noImage,
   onClose,
   onOpen,
+  onOrderChange,
 }) => {
   const [sortedGroups, setSortedGroups] = useState<IGroup[]>(groups)
-
-  useLayoutEffect(() => {
-    const body = document.body
-
-    if (isOpen) {
-      body.style.position = 'fixed'
-    } else {
-      body.style.position = ''
-    }
-  }, [isOpen])
 
   useKey(
     () => {
@@ -59,7 +49,7 @@ export const NavigationDots: FC<{
             [styles.active]: isOpen,
           })}
           onClick={() => {
-            isOpen ? onClose : onOpen()
+            isOpen ? onClose() : onOpen()
           }}
         >
           <i>

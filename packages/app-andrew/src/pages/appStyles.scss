@@ -5,6 +5,7 @@
   min-height: 100vh;
   display: flex;
 
+  // @todo remove it soon
   // temp bg
   background-image: url('/images/bg-images/group_bg_1.png');
   @include imageCover();
@@ -25,5 +26,17 @@
     &[data-loaded='false'] {
       filter: blur(35px);
     }
+  }
+}
+
+
+.testa {
+  position: fixed;
+  background: black;
+  width: 500px;
+  height: 100vh;
+
+  p {
+    margin: 100px 0;
   }
 }

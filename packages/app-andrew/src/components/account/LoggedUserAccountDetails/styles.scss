@@ -4,27 +4,25 @@
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 
 .userHeader {
-  margin: 5px 0;
-
-  .avatarWrapper {
-    min-width: 100px;
-    min-height: 100px;
-    border-radius: $borderRadius;
-    overflow: hidden;
-    cursor: pointer;
-
+  .avatar {
+    margin:auto;
+    
     &:hover {
-      @include effectColorTransparentOverlay('defaultRadius');
+      @include effectColorTransparentOverlay('circle');
     }
   }
 
+  .spinner {
+    margin: auto;
+  }
+
   .userNameSurnameLogin {
-    @include fontSize(md);
+    @include fontSize(xdefault);
     @include fontWeight(semiBold);
+    margin: 10px 0;
 
     .login {
       display: block;
-      @include fontSize(md);
       color: $theme0;
     }
   }
@@ -32,6 +30,7 @@
   .desc {
     font-style: italic;
     color: $theme0;
+    margin-bottom: 15px;
 
     .aboutMeLabel {
       font-style: initial;

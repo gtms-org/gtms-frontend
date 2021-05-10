@@ -85,7 +85,7 @@
       height: 100%;
       @include imageCover();
       border-radius: $borderRadius;
-      transition: top 0.3s ease-in-out;
+      transition: top $animationSpeedSlow;
 
       &.active {
         top: 0;

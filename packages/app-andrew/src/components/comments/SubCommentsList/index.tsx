@@ -71,7 +71,7 @@ export const SubCommentsList: FC<{
           />
           {showSendButton && (
             <Button
-              className={styles.btn}
+              additionalStyles={styles.btn}
               disabled={value === ''}
               onClick={() => {
                 createNewComment({

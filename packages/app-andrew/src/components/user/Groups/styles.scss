@@ -4,9 +4,10 @@
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/grid.scss';
 @import '~@gtms/styles/scss/mixins/imageCover.scss';
+@import '~@gtms/styles/scss/mixins/mediaQueries.scss';
 @import '~@gtms/styles/scss/mixins/shadows.scss';
 
-.wrapper {
+.wrapper {  
   .navigation {
     display: flex;
     margin-bottom: 20px;
@@ -42,11 +43,15 @@
         }
       }
     }
-  }
+  } 
 }
 
 .groupItems {
-  @include gridDefault(4);
+  @include gridDefault(2);
+  
+  @include for-desktop-only {
+    @include gridDefault(4);
+  }
 
   .item {
     position: relative;
@@ -99,4 +104,4 @@
 
 .pagination {
   margin-top: 15px;
-}
+} 

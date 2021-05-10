@@ -8,15 +8,17 @@ import { GroupAvatarNoImage } from '@app/enums'
 //state
 import { showGroupPreview } from '@app/state/groupPreview'
 // ui
+import { IoMdInformationCircleOutline } from 'react-icons/io'
 import { Picture } from '@gtms/ui/Picture'
 import { Spinner } from '@gtms/ui/Spinner'
 // styles
 import styles from './styles.scss'
 
 export const MyPostsFilters: FC<{
-  onGroupClick: (groupName: string, groupId: string) => void
   active?: string[]
-}> = ({ onGroupClick, active = [] }) => {
+  additionalStyles?: string
+  onGroupClick: (groupName: string, groupId: string) => void
+}> = ({ active = [], additionalStyles, onGroupClick }) => {
   const [data, setData] = useState<{
     isLoading: boolean
     errorOccured: boolean
@@ -42,13 +44,16 @@ export const MyPostsFilters: FC<{
   }
 
   return (
-    <div data-testid="posts-filters">
-      {data.isLoading && <Spinner />}
+    <div 
+      data-testid="posts-filters"
+      className={cx(styles.wrapper, additionalStyles)}
+      >
+      {data.isLoading && <Spinner additionalStyles={styles.spinner} />}
       {!data.isLoading && data.errorOccured && (
         <p>Error occured, please try later</p>
       )}
-      {data.filters && (
-        <ul>
+      {data.filters && data.filters.length > 0 && (
+        <ul className={styles.items}>
           {data.filters.map((group) => (
             <li
               className={cx(styles.item, {
@@ -56,15 +61,22 @@ export const MyPostsFilters: FC<{
               })}
               key={`group-filter-${group.id}`}
             >
-              <a onClick={() => showGroupPreview(group)}>
-                <Picture
-                  {...getImage('50x50', group.avatar, GroupAvatarNoImage)}
-                />
-              </a>
-              <a onClick={() => onGroupClick(group.name, group.id)}>
-                {group.name}
-              </a>
-              {group.count} posts created
+              <Picture
+                additionalStyles={styles.avatar}
+                onClick={() => showGroupPreview(group)}
+                {...getImage('50x50', group.avatar, GroupAvatarNoImage)}
+              />
+              <div className={styles.desc}>
+                <a onClick={() => onGroupClick(group.name, group.id)}>
+                  {group.name}
+                  <span>
+                    {group.count} posts created
+                  </span>
+                </a>
+              </div>
+              <i className={styles.iconInfo}>
+                <IoMdInformationCircleOutline />
+              </i>
             </li>
           ))}
         </ul>

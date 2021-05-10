@@ -27,7 +27,7 @@
       height: 38px;
       background: rgba(34, 50, 84, 0.03);
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s;
     }
 
     svg {
@@ -39,7 +39,7 @@
       stroke: $theme0;
       stroke-width: 1.5;
       transform: translate3d(0, 0, 0);
-      transition: all 0.2s ease;
+      transition: all $animationSpeedSlow;
     }
 
     svg path {
@@ -70,12 +70,12 @@
 
     &:checked + label svg path {
       stroke-dashoffset: 60;
-      transition: all 0.3s linear;
+      transition: all $animationSpeedSlow;
     }
 
     &:checked + label svg polyline {
       stroke-dashoffset: 42;
-      transition: all 0.2s linear;
+      transition: all $animationSpeedSlow;
       transition-delay: 0.15s;
     }
   }

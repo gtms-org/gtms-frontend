@@ -68,7 +68,7 @@ export const GroupMembers: FC<{
                     additionalStyles={styles.avatar}
                     image={faces[index].jpg}
                     user={user}
-                    // image={getImage('50x50', user.avatar, UserAvatarNoImage)}
+                    image={getImage('50x50', user.avatar, UserAvatarNoImage)}
                   />
                 </a>
               </Link>

@@ -18,7 +18,9 @@
 
 .noComments {
   position: relative;
-  border: 1px solid red;
+  display: block;
+  padding: 20px;
+  border: 1px solid $theme3;
   @include fontSize(sm);
   font-style: italic;
 }

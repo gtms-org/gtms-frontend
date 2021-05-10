@@ -9,7 +9,7 @@ export const UserCard: FC<{
   alt?: string
   // @todo remove any
   image: any
-  user: any
+  user?: any
   // image: IImage
   onClick?: () => void
   size?: string

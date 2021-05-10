@@ -6,7 +6,7 @@
   display: flex;
   gap: 10px;
   width: 100%;
-  transition: top 200ms linear;
+  transition: top $animationSpeedSlow;
 
   .search {
     // @todo remove it when search will be finished

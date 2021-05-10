@@ -9,6 +9,9 @@
   grid-gap: 8px;
 
   .avatarAndName {
+    // @todo remove it - temporary hidden
+    display: none;
+
     .groupAvatar {
       width: 35px;
       height: 35px;

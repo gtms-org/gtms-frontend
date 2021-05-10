@@ -23,14 +23,14 @@ export const PostsList: FC<{
         records.length > 0 &&
         records.map((post) => (
           <PostSingle
-            key={`post-${post.id}`}
+            {...post}
+            createComment={() => null}
             fetchTags={findTagsAPI}
             fetchUsers={findbyUsernameAPI}
-            createComment={() => null}
-            user={user}
-            {...post}
+            key={`post-${post.id}`}
             noImage={UserAvatarNoImage}
             onLoginRequest={openLoginModal}
+            user={user}
           />
         ))}
       {!isLoading && records.length === 0 && (

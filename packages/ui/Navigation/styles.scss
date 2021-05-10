@@ -6,9 +6,8 @@
 .navigation {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   padding: 5px;
-  margin-bottom: 5px;
   @include fontSize(md);
   cursor: pointer;
 
@@ -23,7 +22,7 @@
   .items {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 
     .item {
       position: relative;

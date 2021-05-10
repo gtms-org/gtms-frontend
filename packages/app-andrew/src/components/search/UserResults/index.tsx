@@ -33,7 +33,7 @@ export const UserResults: FC<{
   return (
     <div data-testid="search-group-results">
       {isLoading && (
-        <div className={styles.noRecords}>
+        <div className={styles.searching}>
           <MockData />
           <MockData onClick={() => null} text="Searching, please wait..." />
           <MockData numberOfElements={4} />

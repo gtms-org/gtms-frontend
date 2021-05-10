@@ -14,21 +14,20 @@
     position: relative;
     display: flex;
     width: 100%;
-    min-height: 34px;
-    height: 34px;
+    height: 40px;
 
     i {
       @include fontSize(md);
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: 12px;
+      left: 12px;
       line-height: 0;
       color: $theme1;
     }
 
     input[type='text'] {
       width: 100%;
-      padding-left: 30px;
+      padding-left: 35px;
       border: 0;
       border-radius: $borderRadius;
       box-shadow: $boxShadowDefault;

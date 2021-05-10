@@ -47,9 +47,7 @@ export const EmailChangeForm: FC<{
 
   if (isSaving) {
     return (
-      <div className={styles.spinner}>
-        <Spinner />
-      </div>
+      <Spinner additionalStyles={styles.spinner} />
     )
   }
 
