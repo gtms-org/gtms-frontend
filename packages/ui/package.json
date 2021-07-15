@@ -9,16 +9,16 @@
     "@types/react-custom-scrollbars": "^4.0.6"
   },
   "dependencies": {
-    "@gtms/commons": "0.35.1",
-    "@gtms/state-user": "0.22.1",
-    "@gtms/styles": "0.35.0",
-    "@types/react-transition-group": "^4.4.0",
-    "react-avatar-editor": "^12.0.0-beta.0",
-    "react-circular-progressbar": "^2.0.3",
-    "react-custom-scrollbars": "^4.2.1",
-    "react-dropzone": "^10.2.2",
-    "react-transition-group": "^4.4.1",
-    "react-use-clipboard": "^1.0.0"
+    "@gtms/commons": "*",
+    "@gtms/state-user": "*",
+    "@gtms/styles": "*",
+    "@types/react-transition-group": "*",
+    "react-avatar-editor": "*",
+    "react-circular-progressbar": "*",
+    "react-custom-scrollbars": "*",
+    "react-dropzone": "*",
+    "react-transition-group": "*",
+    "react-use-clipboard": "*"
   },
   "scripts": {
     "build": "exit 0",
