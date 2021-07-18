@@ -1,9 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import {
-  userQuery,
-  updateAccountAvatar,
-  updateAccountDetails,
-} from '@gtms/state-user'
+import { userQuery, updateAccountAvatar } from '@gtms/state-user'
 import { IAccountDetails } from '@gtms/commons/models'
 import { FileStatus } from '@gtms/commons/enums'
 import { UserEmail } from '@app/components/account/UserEmail'

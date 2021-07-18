@@ -30,6 +30,7 @@ export interface INotificationsSidebarProps {
 
 export interface INavigationDotsProps {
   isVisible: boolean
+  isOpen: boolean
   isLogged: boolean
   isLoaded: boolean
   groups: IGroup[]
