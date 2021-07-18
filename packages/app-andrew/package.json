@@ -16,19 +16,19 @@
     "test": "jest"
   },
   "dependencies": {
-    "@gtms/api-abuse": "0.5.1",
-    "@gtms/api-auth": "0.16.1",
-    "@gtms/api-file": "0.5.1",
-    "@gtms/api-group": "0.19.1",
-    "@gtms/api-tags": "0.12.1",
-    "@gtms/commons": "0.35.1",
-    "@gtms/state-comment": "0.8.1",
-    "@gtms/state-group": "0.21.1",
-    "@gtms/state-notification": "0.13.1",
-    "@gtms/state-post": "0.17.1",
-    "@gtms/state-tag": "0.15.0",
-    "@gtms/state-user": "0.22.1",
-    "@gtms/styles": "0.35.0",
-    "@gtms/ui": "0.89.0"
+    "@gtms/api-abuse": "*",
+    "@gtms/api-auth": "*",
+    "@gtms/api-file": "*",
+    "@gtms/api-group": "*",
+    "@gtms/api-tags": "*",
+    "@gtms/commons": "*",
+    "@gtms/state-comment": "*",
+    "@gtms/state-group": "*",
+    "@gtms/state-notification": "*",
+    "@gtms/state-post": "*",
+    "@gtms/state-tag": "*",
+    "@gtms/state-user": "*",
+    "@gtms/styles": "*",
+    "@gtms/ui": "*"
   }
 }

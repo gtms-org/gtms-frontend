@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@datorama/akita": "^5.3.0",
+    "@types/react-avatar-editor": "^10.3.6",
     "@types/react-headroom": "^2.2.1",
     "@zeit/next-sass": "^1.0.1",
     "atob": "^2.1.2",
