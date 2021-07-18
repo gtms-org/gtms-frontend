@@ -14,7 +14,7 @@ $navigationDotAllMyGroupsSidebarWidth: 500px;
     @include z-index(allMyGroupsSidebar);
     width: $navigationDotAllMyGroupsSidebarWidth;
     height: 100%;
-    transition: left 0.1s ease-in-out;
+    transition: left $animationSpeedDefault;
     background: $theme1;
 
     .content {
@@ -27,7 +27,7 @@ $navigationDotAllMyGroupsSidebarWidth: 500px;
       & + div {
         left: initial;
         right: -100%;
-        transition: right 0.2s ease-in-out;
+        transition: right $animationSpeedDefault;
       }
     }
 
@@ -62,7 +62,7 @@ $navigationDotAllMyGroupsSidebarWidth: 500px;
       overflow: hidden;
       border-radius: $borderRadius;
       cursor: pointer;
-      transition: 200ms all;
+      transition: $animationSpeedSlow all;
 
       > div {
         display: flex;

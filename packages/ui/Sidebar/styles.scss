@@ -11,7 +11,7 @@
     @include z-index(sidebar);
     height: 100%;
     background-color: $theme1;
-    transition: all 300ms ease-in;
+    transition: all $animationSpeedSlow;
   }
 
   &.leftSide {

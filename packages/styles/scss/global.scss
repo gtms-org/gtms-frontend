@@ -8,7 +8,7 @@
 
 :global .enter.enter-active {
   opacity: 1;
-  transition: opacity 300ms ease-in;
+  transition: opacity $animationSpeedSlow;
 }
 
 :global .exit {
@@ -17,7 +17,7 @@
 
 :global .exit.exit-active {
   opacity: 0;
-  transition: opacity 300ms ease-out;
+  transition: opacity $animationSpeedSlow;
 }
 
 html {

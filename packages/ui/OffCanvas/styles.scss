@@ -5,7 +5,7 @@
   left: 0;
   display: flex;
   width: 100%;
-  transition: left 500ms;
+  transition: left $animationSpeedDefault;
 
   &.isActive {
     left: 520px;
