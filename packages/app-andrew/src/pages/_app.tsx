@@ -7,10 +7,12 @@ import { NavigationWrapper } from '@app/components/commons/NavigationWrapper'
 import { NotificationsSidebar } from '@app/components/commons/NotificationsSidebar'
 import { NotificationsActive } from '@app/components/commons/NotificationsActive'
 import { GroupPreview } from '@app/components/commons/GroupPreview'
+import { PostDetailsModal } from '@app/components/post/PostDetailsModal'
+import { LoginWindow } from '@app/components/commons/LoginWindow'
 import { init, initAuthSession } from '@gtms/state-user'
 import { init as initWPN } from '@gtms/state-notification'
-import { LoginWindow } from '@app/components/commons/LoginWindow'
 import { uiQuery } from '@app/state'
+import { baseUIQuery } from '@app/queries'
 import { OffCanvas } from '@gtms/ui/OffCanvas'
 
 // styles
@@ -40,6 +42,7 @@ interface GTMSAppState {
 
 class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
   private subscription: any
+  private offCanvassubscription: any
 
   constructor(props: any) {
     super(props)
@@ -47,7 +50,7 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
     this.state = {
       ...uiQuery.pageBackgrounds(),
       backgroundLoaded: false,
-      isOffCanvasActive: false,
+      isOffCanvasActive: baseUIQuery.isOffCanvasOpen(),
     }
   }
 
@@ -88,6 +91,14 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
       }
     })
 
+    this.offCanvassubscription = baseUIQuery.isOffCanvasOpen$.subscribe(
+      (value) => {
+        this.setState({
+          isOffCanvasActive: value,
+        })
+      }
+    )
+
     if (auth?.accessToken && auth.refreshToken) {
       init(
         auth as {
@@ -103,6 +114,10 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
     this.subscription &&
       !this.subscription.closed &&
       this.subscription.unsubscribe()
+
+    this.offCanvassubscription &&
+      !this.offCanvassubscription.closed &&
+      this.offCanvassubscription.unsubscribe()
   }
 
   render() {
@@ -123,6 +138,7 @@ class GTMSApp extends App<GTMSAppProps, {}, GTMSAppState> {
         >
           <NavigationWrapper />
           <GroupPreview />
+          <PostDetailsModal />
           <Component {...pageProps} />
           {/* <div
             className={cx(

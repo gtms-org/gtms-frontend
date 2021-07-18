@@ -48,6 +48,7 @@ import {
   changePageBackground,
   changePageBackgroundImage,
   clearPageBackground,
+  showPostDetailsModal,
 } from '@app/state'
 // ui
 import Headroom from 'react-headroom'
@@ -231,9 +232,9 @@ const GroupPage: NextPage<GroupPageProps> = (props) => {
     [state]
   )
 
-  const onPostClick = useCallback((id: string) => onClick({ post: id }), [
-    onClick,
-  ])
+  const onPostClick = useCallback((id: string) => {
+    showPostDetailsModal(id, true)
+  }, [])
   const onTagClick = useCallback((tag: string) => onClick({ tag }), [onClick])
 
   useEffect(() => {

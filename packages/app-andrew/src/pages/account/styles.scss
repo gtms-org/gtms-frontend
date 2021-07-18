@@ -4,105 +4,25 @@
 @import '~@gtms/styles/scss/mixins/fontSize.scss';
 @import '~@gtms/styles/scss/mixins/fontWeight.scss';
 @import '~@gtms/styles/scss/mixins/header.scss';
+@import '~@gtms/styles/scss/mixins/grid.scss';
 @import '~@gtms/styles/scss/mixins/pageWrapper.scss';
 
 .pageWrapper {
-  @include pageWrapper(width700);
+  @include pageWrapper();
+  background: $theme2;
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  min-height: 100%;
-  border-radius: $borderRadius;
-  background: $theme3;
+  margin: auto;
+  max-width: 980px;
+
+  .content {
+    display: flex;
+    gap: 15px;
+  }
 
   .spinner {
     margin: auto;
-  }
-
-  .hint {
-    position: relative;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: $borderRadius;
-    background: $theme3;
-    color: $theme0;
-    @include fontWeight(semiBold);
-
-    span {
-      @include fontSize(sm);
-      @include fontWeight(light);
-      display: block;
-      margin-top: 2px;
-      opacity: 0.9;
-    }
-
-    &:after {
-      position: absolute;
-      left: 40px;
-      bottom: -10px;
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 10px solid $theme3;
-    }
-
-    &:hover {
-      background: $theme4;
-      color: $theme0;
-
-      &:after {
-        border-top-color: $theme4;
-      }
-    }
-  }
-
-  .userHeader {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-
-    .avatarWrapper {
-      min-width: 100px;
-      min-height: 100px;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-
-      &:hover {
-        @include effectColorTransparentOverlay('circle');
-      }
-    }
-
-    .userNameSurnameLogin {
-      @include fontSize(md);
-      @include fontWeight(semiBold);
-      margin-left: 15px;
-
-      .login {
-        display: block;
-        @include fontSize(md);
-        color: $theme0;
-      }
-    }
-
-    .desc {
-      margin-left: 15px;
-      font-style: italic;
-      color: $theme0;
-
-      .aboutMeLabel {
-        font-style: initial;
-        text-transform: uppercase;
-        @include fontSize(sm);
-      }
-    }
   }
 
   .links {
@@ -114,7 +34,7 @@
 
       .btn {
         @include buttonDefault();
-        @include buttonSizeDefault();
+        @include buttonSizeSm();
         @include buttonShapeDefault();
         @include buttonWithIcon('left');
         @include buttonColorsDefault();
@@ -132,15 +52,10 @@
 
   .userTags {
     margin-top: 15px;
-
-    span {
-      @include header(h1, textUppercase);
-    }
   }
 
   .userStats {
-    display: flex;
-    margin: 15px 0;
+    @include gridDefault(2);
     text-transform: uppercase;
 
     .item {
@@ -155,12 +70,6 @@
       &:hover {
         color: $theme4;
       }
-    }
-  }
-
-  .userGroups {
-    span {
-      @include header(h1, textUppercase);
     }
   }
 }

@@ -14,23 +14,33 @@ export const NavigationDots: FC<{
   groups: IGroup[]
   noImage: { [key: string]: IImage }
   onOrderChange?: (groups: IGroup[]) => unknown
-}> = ({ groups, noImage, children, onOrderChange }) => {
-  const [showFullView, setShowFullView] = useState<boolean>(false)
+  isOpen: boolean
+  onOpen: () => void
+  onClose: () => void
+}> = ({
+  groups,
+  noImage,
+  children,
+  onOrderChange,
+  isOpen,
+  onClose,
+  onOpen,
+}) => {
   const [sortedGroups, setSortedGroups] = useState<IGroup[]>(groups)
 
   useLayoutEffect(() => {
     const body = document.body
 
-    if (showFullView) {
+    if (isOpen) {
       body.style.position = 'fixed'
     } else {
       body.style.position = ''
     }
-  }, [showFullView])
+  }, [isOpen])
 
   useKey(
     () => {
-      setShowFullView(false)
+      onClose()
     },
     {
       detectKeys: [27],
@@ -46,9 +56,11 @@ export const NavigationDots: FC<{
       <div className={styles.navigationDot} data-testid="navigation-dots">
         <div
           className={cx(styles.item, styles.showAllGroups, {
-            [styles.active]: showFullView,
+            [styles.active]: isOpen,
           })}
-          onClick={() => setShowFullView((value) => !value)}
+          onClick={() => {
+            isOpen ? onClose : onOpen()
+          }}
         >
           <i>
             <IoIosKeypad />
@@ -80,7 +92,7 @@ export const NavigationDots: FC<{
       </div>
       <div
         className={cx(styles.fullView, {
-          [styles.active]: showFullView,
+          [styles.active]: isOpen,
         })}
       >
         <div className={styles.content}>{children}</div>

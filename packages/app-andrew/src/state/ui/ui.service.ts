@@ -32,6 +32,21 @@ export const toggleSidebarNotifications = () =>
     isNotificationsBarOpen: !values.isNotificationsBarOpen,
   }))
 
+export const openGroupsBar = () =>
+  uiStore.update(() => ({
+    isGroupsBarOpen: true,
+  }))
+
+export const closeGroupsBar = () =>
+  uiStore.update(() => ({
+    isGroupsBarOpen: false,
+  }))
+
+export const toggleGroupsBar = () =>
+  uiStore.update((values) => ({
+    isGroupsBarOpen: !values.isGroupsBarOpen,
+  }))
+
 export const changePageBackground = (background: string) =>
   uiStore.update({
     background,
