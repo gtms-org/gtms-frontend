@@ -6,7 +6,7 @@
   "main": "src/index.ts",
   "license": "ISC",
   "dependencies": {
-    "@gtms/api-notifications": "0.6.0"
+    "@gtms/api-notifications": "*"
   },
   "scripts": {
     "build": "exit 0",

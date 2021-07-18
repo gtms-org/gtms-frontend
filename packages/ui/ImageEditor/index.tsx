@@ -169,17 +169,19 @@ export const ImageEditor: FC<{
                     return
                   }
 
-                  editorRef.current.getImageScaledToCanvas().toBlob((blob) => {
-                    if (!blob) {
-                      return
-                    }
+                  editorRef.current
+                    .getImageScaledToCanvas()
+                    .toBlob((blob: Blob | null) => {
+                      if (!blob) {
+                        return
+                      }
 
-                    const file = new File([blob], 'user-avatar.jpg', {
-                      type: 'image/jpeg',
-                    })
+                      const file = new File([blob], 'user-avatar.jpg', {
+                        type: 'image/jpeg',
+                      })
 
-                    onSave(file)
-                  }, 'image/jpeg')
+                      onSave(file)
+                    }, 'image/jpeg')
                 }}
               >
                 Save

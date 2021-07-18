@@ -6,10 +6,10 @@
   "main": "src/index.ts",
   "license": "ISC",
   "dependencies": {
-    "@gtms/api-tags": "0.12.1",
-    "@gtms/commons": "0.35.1",
-    "@gtms/state-notification": "0.13.1",
-    "@gtms/state-user": "0.22.1"
+    "@gtms/api-tags": "*",
+    "@gtms/commons": "*",
+    "@gtms/state-notification": "*",
+    "@gtms/state-user": "*"
   },
   "scripts": {
     "build": "exit 0",

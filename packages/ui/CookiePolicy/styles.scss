@@ -12,7 +12,7 @@
   height: 400px;
   border-radius: $borderRadius;
   background: $theme3;
-  transition: bottom 0.2s ease-in-out;
+  transition: bottom $animationSpeedDefault;
 
   &.active {
     bottom: 100px;

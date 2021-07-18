@@ -1763,6 +1763,13 @@
   resolved "https://npm.kabala.tech/@types%2frange-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
+"@types/react-avatar-editor@^10.3.6":
+  version "10.3.6"
+  resolved "https://registry.yarnpkg.com/@types/react-avatar-editor/-/react-avatar-editor-10.3.6.tgz#f902a91b336eac7e3d141ec931eeae9a082e8125"
+  integrity sha512-2r9+WYriqXIyjOTxy/DSiCUhr2TBiYD4Gzbyych1WUEwdPboNj0JRz9B5868TwiGgKD61jdWYyKy/OutHs7L6A==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-custom-scrollbars@^4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@types/react-custom-scrollbars/-/react-custom-scrollbars-4.0.6.tgz#d84831ac287d8fefdf2a7dcbc12a505bcecc8092"
